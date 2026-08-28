@@ -124,4 +124,44 @@ ALTER TABLE TESTE
 
 DROP TABLE TESTE;
 
--- SELECT * FROM TESTE;
+CREATE TABLE CLIENTES (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(50) NOT NULL,
+    Sexo CHAR(1) NULL,
+    Idade INT CHECK (Idade > 18) NOT NULL,
+    CPF CHAR(11) UNIQUE NOT NULL,
+    Email VARCHAR(200) DEFAULT 'meu@email.com' NOT NULL
+);
+
+EXEC sp_help 'CLIENTES';
+
+CREATE TABLE #TabelaA (
+    ID INT NOT NULL,
+    Nome VARCHAR(25) NOT NULL,
+    Sexo CHAR(1) NULL,
+    PRIMARY KEY (ID)
+);
+
+INSERT INTO #TabelaA VALUES
+    (1, 'Marcelo Augusto', 'M'),
+    (2, 'Guaraná Antártica', 'F');
+
+
+
+SELECT name
+FROM sys.tables;
+
+INSERT INTO #TabelaA
+    SELECT  ID,
+            Nome,
+            Sexo
+    FROM FUNCIONARIOS
+    WHERE ID > 2;
+
+
+SELECT  create_date AS 'Data de Criação',
+        name        AS 'Nome'
+FROM sys.tables;
+
+
+    

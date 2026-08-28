@@ -1,0 +1,61 @@
+-- Autor: Álvaro Pereira
+-- Arquivo: script-aula05.sql
+
+USE empresaCJ3037916;
+
+SELECT create_date AS 'Data de Criação',
+name AS 'Nome da Tabela'
+FROM sys.tables;
+
+SELECT * FROM FUNCIONARIOS;
+
+ALTER TABLE FUNCIONARIOS 
+    ADD Telefone CHAR(10);
+
+SELECT * FROM FUNCIONARIOS;
+
+SELECT  TABLE_CATALOG    AS 'Banco de dados',
+        TABLE_NAME       AS 'Tabela',
+        ORDINAL_POSITION AS 'Posição',
+        COLUMN_NAME      AS 'Coluna',
+        DATA_TYPE        AS 'Tipo de Dados',
+        COLLATION_NAME   AS 'Idioma da Coluna',
+        IS_NULLABLE      AS 'Aceita Nulo?'
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'FUNCIONÁRIOS';
+
+ALTER TABLE FUNCIONARIOS
+    ADD Telefone CHAR(10);
+
+UPDATE FUNCIONARIOS
+    SET Telefone = '359970408'
+    WHERE ID = 1;
+
+SELECT * FROM FUNCIONARIOS;
+
+--Atualiza o telefone de alguns funcionarios
+UPDATE FUNCIONARIOS SET Telefone ='3668-1550' WHERE ID =2;
+UPDATE FUNCIONARIOS SET Telefone ='3664-5000' WHERE ID =4;
+UPDATE FUNCIONARIOS SET Telefone ='3664-2001' WHERE ID =5;
+UPDATE FUNCIONARIOS SET Telefone ='3663-9000' WHERE ID =7;
+UPDATE FUNCIONARIOS SET Telefone ='3663-7000' WHERE ID =9;
+UPDATE FUNCIONARIOS SET Telefone ='3662-1515' WHERE ID =10;
+
+SELECT * FROM FUNCIONARIOS;
+
+UPDATE FUNCIONARIOS 
+    SET Salario = Salario * 1.10
+    WHERE YEAR(Admissao) < 2020;
+
+SELECT * FROM FUNCIONARIOS;
+
+SELECT * FROM FuncionariosCOPIA
+WHERE Salario < 2000;
+
+UPDATE FUNCIONARIOS
+    SET Nome = 'Rochelle Styles'
+WHERE Nome = 'Ricardo Styles';
+
+SELECT * FROM FUNCIONARIOS; 
+
+TRUNCATE TABLE FuncionariosCOPIA;
