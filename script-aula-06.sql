@@ -93,5 +93,18 @@ ALTER VIEW MaioresSalarios AS
     FROM FUNCIONARIOS
 GO
 
+
 SELECT * FROM MaioresSalarios
 ORDER BY [Salário] DESC;
+
+
+SELECT [Código do Funcionário],
+        Nome,
+        "Sexo do funcionário",
+        Salário
+FROM MaioresSalarios
+Where Salário > 1500;
+
+EXEC sp_helptext MaioresSalarios;
+
+
