@@ -62,5 +62,36 @@ SELECT * FROM FUNCIONARIOS
 WHERE UPPER(Nome) Like '%CAMPESTRIM'
 ORDER BY Nome;
 
+SELECT * FROM FUNCIONARIOS 
+WHERE Nome LIKE '[^A]%'
+ORDER BY Nome;
 
+GO
 
+CREATE VIEW MaioresSalarios AS  
+    SELECT ID AS 'Código do Funcionário',
+           Nome,
+           Sexo,
+           Salario AS 'Salário'
+    FROM FUNCIONARIOS;
+
+GO
+
+SELECT * FROM MaioresSalarios;
+SELECT  [Código do Funcionário],
+        Nome,
+        [Salário]
+FROM MaioresSalarios;
+
+GO
+
+ALTER VIEW MaioresSalarios AS 
+    SELECT ID AS [Código do Funcionário],
+           Nome, 
+           Sexo AS [Sexo do funcionário],
+           Salario AS [Salário]
+    FROM FUNCIONARIOS
+GO
+
+SELECT * FROM MaioresSalarios
+ORDER BY [Salário] DESC;
