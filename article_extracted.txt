@@ -1,0 +1,336 @@
+KEYWORDS
+17¼ Congresso de Inovao, Cincia e Tecnologia do IFSP Ð 2026 
+Campus Guarulhos
+Influncia do tamanho amostral e da aleatoriedade na classificao morfolgica de galxias: 
+uma comparao entre Random Forest e Support Vector Machine linear 
+NOME A. SOBRENOME
+, AUTOR
+, AUTOR
+, AUTOR
+OMITIDO 
+email@orientador.com
+RESUMO:
+ A classificao morfolgica de galxias em larga escala depende tanto do modelo quanto 
+das condies que definem os conjuntos de treino, validao e teste. Este trabalho investiga se o 
+tamanho amostral e o gerador pseudoaleatrio \(PRNG\) modificam o desempenho e a estabilidade de 
+Random Forest e  Support Vector Machine \(SVM\) linear. Foram utilizadas 34.874 galxias do 
+COSMOS Zurich Structure and Morphology Catalog, representadas por sete atributos estruturais e trs 
+classes. O protocolo combinou dois classificadores, quatro fraes amostrais, trs PRNGs e 30 
+seeds
+totalizando 720 execues e 360 pares exatos. O Random Forest superou a SVM linear em todas as 
+condies, e a diferena aumentou com o tamanho do conjunto: de 2,43 para 3,06 pontos percentuais 
+em acurcia e de 2,69 para 3,95 pontos em F1 macro. O tamanho modificou significativamente essa 
+diferena, enquanto no houve evidncia de efeito do PRNG. Ademais, a disperso entre 
+seeds
+diminuiu com mais dados em ambos os modelos. Os resultados reforam a necessidade de execues 
+pareadas e mltiplas 
+seeds
+ em avaliaes reprodutveis. 
+PALAVRAS-CHAVE
+: Classificao morfolgica de galxias; COSMOS; Support Vector Machine; 
+Gerador pseudoaleatrio; 
+Seed.
+Influence of sample size and randomness on the morphological classification of galaxies: a 
+comparison between Random Forest and linear Support Vector Machine. 
+ABSTRACT:
+ Large-scale galaxy morphological classification depends on both the model and the 
+conditions defining the training, validation, and test sets. This study investigates whether sample size 
+and the pseudorandom number generator \(PRNG\) modify the performance and stability of Random 
+Forest and linear SVM. We used 34,874 galaxies from the COSMOS Zurich Structure and 
+Morphology Catalog, represented by seven structural features and three classes. The protocol 
+combined two classifiers, four sample fractions, three PRNGs, and 30 seeds, totaling 720 runs and 360 
+exact pairs. Random Forest outperformed linear SVM under every condition, and the gap increased 
+with sample size: from 2.43 to 3.06 percentage points in accuracy and from 2.69 to 3.95 points in 
+macro F1. Sample size significantly changed this gap, whereas no evidence of a PRNG effect was 
+found. Furthermore, between-seed dispersion decreased with more data for both models. These 
+findings reinforce the need for paired runs and multiple seeds in reproducible evaluations.
+: Galaxy morphological classification; COSMOS; Support Vector Machine; 
+Pseudorandom number generator; 
+Seed.
+TRODUÌO
+O crescimento dos levantamentos astronmicos tornou a classificao automtica de galxias 
+uma etapa necessria para o estudo de sua formao e evoluo. Nesse contexto, mtodos de 
+aprendizado de mquina permitem tratar volumes de dados que inviabilizam a inspeo manual, 
+auxiliando a identificao de padres morfolgicos em grandes catlogos. Entretanto, comparaes 
+centradas somente no melhor desempenho mdio podem ocultar a sensibilidade dos modelos  
+composio dos subconjuntos experimentais. 
+17¼ CONICT 2026
+ISSN: 2178-9959
+seed
+A partio dos dados  determinstica quando o gerador pseudoaleatrio, a 
+ e a sequncia de 
+operaes so mantidos, mas geradores ou 
+seeds
+ distintos podem produzir subconjuntos diferentes. 
+Em etapa anterior desta pesquisa, observou-se que conjuntos menores ampliavam a disperso do 
+Random Forest entre 
+seeds
+, sugerindo que parte da variao experimental pode estar associada  
+forma como os dados so divididos. Essa questo torna-se especialmente relevante quando se busca 
+comparar classificadores de maneira reprodutvel. 
+Assim, o presente trabalho retoma o protocolo anterior e desloca a pergunta cientfica para a 
+relao entre tamanho amostral, aleatoriedade e modelo classificador. Para isso, compara-se o Random 
+Forest com uma SVM linear, mantendo divises pareadas para que ambos sejam avaliados sobre os 
+mesmos subconjuntos. Busca-se verificar se o comportamento observado anteriormente se mantm 
+diante de outro classificador supervisionado, se o tamanho amostral altera a diferena entre os 
+modelos e se a escolha do PRNG produz efeito detectvel sobre o desempenho. 
+MATERIAL E MTODOS
+Utilizou-se o COSMOS Zurich Structure and Morphology Catalog v1.0, derivado de 
+observaes do Hubble Space Telescope e do mtodo Zurich Estimator of Structural Types \(ZEST\) 
+\(Scarlata et al., 2007\). Aps a aplicao dos critrios de qualidade do catlogo e a remoo de objetos 
+sem classificao vlida, permaneceram 34.874 galxias: 3.193 early-type, 27.623 disk e 4.058 
+irregular. Cada objeto foi representado pelo coeficiente de Gini, momento de segunda ordem dos 20% 
+pixels mais brilhantes \(M20\), concentrao, assimetria, ndice de Srsic, elipticidade e raio de meia-
+luz. O identificador do catlogo foi preservado somente para rastreabilidade e no integrou as 
+variveis de entrada. 
+Para avaliar o tamanho amostral, foram gerados subconjuntos estratificados de 25%, 50%, 
+75% e 100% da base preparada, com 8.718, 17.437, 26.156 e 34.874 objetos, respectivamente. A 
+seleo das fraes foi fixada com random_state igual a 42. Em seguida, cada conjunto foi dividido de 
+forma estratificada em treino, validao e teste na proporo 70-15-15, repetindo-se a partio com as 
+seeds de 1000 a 1029 e com trs PRNGs: MT19937, PCG64 e PCG64-CP A Lite 1. 
+Foram comparadas duas configuraes supervisionadas. O Random Forest utilizou 101 
+rvores, profundidade mxima 25, critrio Gini, seleo de atributos pela raiz quadrada e pesos 
+balanceados, mantendo sua aleatoriedade interna em 42 \(Breiman, 2001\). A SVM linear utilizou C=1, 
+pesos balanceados e at 10.000 iteraes; antes do ajuste, cada atributo foi padronizado por 
+StandardScaler aprendido exclusivamente no treino \(Cortes e Vapnik, 1995\). Para cada combinao de 
+tamanho, PRNG e seed, um manifesto registrou os ndices destinados aos subconjuntos, sendo 
+reaplicado aos dois classificadores. O desenho reuniu 720 execues e 360 pares exatos. 
+Os experimentos foram conduzidos em ambiente Python, com NumPy para os geradores 
+pseudoaleatrios, pandas para manipulao tabular e scikit-learn para classificadores, pr-
+processamento e mtricas \(Pedregosa et al., 2011\). O cdigo foi organizado em mdulos para 
+preparao dos dados, gerao dos manifestos, execuo dos modelos, consolidao dos resultados e 
+anlise estatstica. Para fins de transparncia e reprodutibilidade, o cdigo-fonte, est disponibilizado 
+em repositrio pblico no GitHub, na ramificao OMITIDO, permitindo a inspeo do pipeline 
+computacional e a reproduo das execues descritas neste trabalho. Ferramentas de inteligncia 
+artificial generativa da OpenAI, por meio do ambiente Codex baseado em modelos GPT, foram 
+utilizadas como apoio  implementao e reviso do pipeline computacional, organizao de 
+comandos experimentais, consolidao de resultados e reviso lingustica do manuscrito. A definio 
+do protocolo, a verificao dos cdigos, a validao dos resultados, a interpretao cientfica e a 
+verso final permaneceram sob responsabilidade dos autores e do orientador. 
+A avaliao concentrou-se na acurcia e no F1 macro do conjunto de teste. Para comparar os 
+classificadores em cada tamanho, os resultados dos trs PRNGs foram promediados dentro de cada 
+seed, formando 30 blocos pareados, e aplicou-se o teste de postos sinalizados de Wilcoxon com 
+correo de Holm \(Wilcoxon, 1945; Holm, 1979\). Para verificar se a diferena entre classificadores 
+mudava entre tamanhos, empregou-se o teste de Friedman com as seeds como blocos repetidos, 
+seguido por Wilcoxon entre pares quando o teste global permanecia significativo aps Holm. 
+O W de Kendall foi utilizado para quantificar o tamanho do efeito. Os intervalos de confiana 
+de noventa e cinco por cento das diferenas mdias foram calculados pela distribuio 
+ sobre os trinta 
+blocos pareados. O mesmo delineamento com o teste de Friedman foi empregado para avaliar os trs 
+PRNGs dentro de cada classificador, tamanho amostral e mtrica, bem como seu efeito sobre a 
+diferena entre os modelos. Adotou-se nvel de significncia 
+ = 0,05
+17¼ CONICT 2026
+ISSN: 2178-9959
+10
+!"
+seed
+RESULTADOS E DISCUSSÌO
+O Random Forest apresentou ganho contnuo com o aumento da amostra. Entre 25% e 100% 
+dos dados, sua acurcia mdia passou de 92,88% para 93,65%, e o F1 macro, de 86,56% para 87,91%. 
+A SVM linear, por sua vez, variou em torno de um patamar: sua acurcia foi de 90,45% em 25%, 
+alcanou 90,69% em 50% e terminou em 90,58%; o F1 macro passou de 83,87% para 83,96%, com 
+mximo de 84,19% em 50%. A Figura 1 mostra, portanto, que mais dados favoreceram principalmente 
+o classificador baseado em rvores. 
+FIGURA 1.
+Desempenho mdio no teste e desvio-padro entre 90 execues por classificador e 
+tamanho \(3 PRNGs 
+ 30 seeds\).
+A comparao pareada confirmou essa separao. O Random Forest foi superior nas oito 
+combinaes de tamanho e mtrica \(Wilcoxon, pHolm=1,49
+\). Ademais, o intervalo de 
+confiana permaneceu inteiramente acima de zero em todos os tamanhos. A diferena mdia 
+cresceu de 2,43 para 3,06 pontos percentuais em acurcia e de 2,69 para 3,95 pontos em F1 macro 
+\(Figura 2 e Tabela 1\). Esse crescimento no significa que toda SVM seja inferior ao Random 
+Forest; ele descreve as configuraes fixas e os atributos avaliados. 
+FIGURA 2.
+Diferena mdia \(Random Forest - SVM\) linear e intervalo de confiana de 95%, aps 
+mdia dos PRNGs dentro de cada 
+A ampliao gradual da distncia entre os modelos  compatvel com as diferentes hipteses 
+de deciso que os caracterizam; o Random Forest pode representar relaes no lineares e interaes 
+entre atributos, enquanto a SVM linear mantm uma fronteira de deciso linear aps a padronizao 
+das variveis. Nesse contexto, o acrscimo de observaes pode ter fornecido ao Random Forest maior 
+suporte para explorar padres complexos presentes nos dados, ao passo que a SVM permaneceu 
+limitada  forma linear de
+nida pelo protocolo. Essa leitura, contudo, restringe-se s con
+guraes 
+avaliadas, pois no foram testados outros kernels ou otimizaes adicionais.
+17¼ CONICT 2026
+ISSN: 2178-9959
+10
+!"
+10
+!5
+!"#
+%&'()&*
+!'+,
+-!'!&.
+!'"&/
+!'01
+-!'+!.
+!'1(/
+"2#
+%)('+,(*
+!'"&
+-!'+&.
+!'0&/
+,'2!
+-!'&0.
+,')(/
+("#
+%!0')"0*
+!'(1
+-!'(!.
+!'&(/
+,'+,
+-,'!1.
+,'"0/
+)22#
+%,+'&(+*
+,'20
+-!'11.
+,')+/
+,'1"
+-,'&,.
++'2(/
+TABELA 1.
+Diferena mdia Random Forest - SVM linear, em pontos percentuais, com intervalo de 
+confiana de 95%. 
+Nota:
+os trs PRNGs foram promediados dentro de cada uma das 30 
+seeds
+Observa-se ainda, que o aumento da diferena entre os classi
+cadores foi mais pronunciado no F1 
+macro do que na acurcia. Entre as fraes de 25% e 100%, a vantagem mdia do Random Forest 
+ampliou-se em 0,63 ponto percentual na acurcia, passando de 2,43 para 3,06 pontos, e em 1,26 ponto 
+percentual no F1 macro, de 2,69 para 3,95 pontos. Por atribuir o mesmo peso a cada classe, 
+independentemente de sua frequncia no conjunto de dados, o F1 macro evidencia que o afastamento 
+entre os modelos tambm se manifesta quando se considera o equilbrio do desempenho entre as 
+categorias morfolgicas. Esse comportamento refora a pertinncia do uso conjunto das duas mtricas 
+e aponta a anlise individual das classes early-type, disk e irregular como uma possibilidade relevante 
+de aprofundamento em estudos futuros.
+O teste de Friedman indicou que o tamanho modificou o afastamento entre os classificadores, 
+tanto para acurcia \(
+"#
+=38,92; pHolm=1,80
+; W=0,432\) quanto para F1 macro \(
+"#
+=50,60; 
+pHolm=1,19
+; W=0,562\). Nos ps-testes, a mudana entre 25% e 50% no permaneceu 
+significativa aps a correo global de Holm \(pHolm=0,140 nas duas mtricas\). As outras dez 
+comparaes foram significativas, inclusive 75% contra 100%. Assim, o efeito no se resume a uma 
+oscilao entre conjuntos pequenos; ele se acentua  medida que o Random Forest continua 
+aproveitando o acrscimo de dados e a SVM linear estabiliza. 
+A estabilidade, entretanto, melhorou nos dois modelos. O desvio-padro da acurcia entre 
+seeds caiu de 0,65 para 0,32 ponto percentual no Random Forest e de 0,77 para 0,41 na SVM. Para F1 
+macro, a disperso foi reduzida de 1,19 para 0,64 ponto nos dois casos. Esse resultado amadurece a 
+concluso da etapa anterior: o aumento amostral diminui a dependncia de uma partio particular, 
+mesmo quando no produz o mesmo ganho mdio em classificadores com hipteses de deciso 
+distintas. 
+Em contraste, no houve evidncia de efeito sistemtico do PRNG. Nenhum dos 16 testes 
+realizados dentro das combinaes de classificador, tamanho e mtrica permaneceu significativo aps 
+Holm; o maior W de Kendall foi 0,085. O mesmo ocorreu nos oito testes que avaliaram se o PRNG 
+alterava a diferena Random Forest-SVM, cujo maior W foi 0,081. Em conjunto, os p-valores 
+corrigidos foram iguais ou superiores a 0,702. Logo, pequenas mudanas na ordenao das mdias 
+entre MT19937, PCG64 e PCG64-CP A Lite 1 no sustentam a escolha de um gerador como superior. 
+O resultado tambm no demonstra equivalncia matemtica entre eles; indica ausncia de diferena 
+detectvel no protocolo, nas mtricas e no nmero de 
+seeds
+ empregados. 
+A interpretao deve considerar quatro limites. Primeiro, avaliou-se um nico catlogo e sete 
+atributos estruturais. Segundo, as classes so desbalanceadas, apesar do uso de pesos e F1 macro. 
+Terceiro, os hiperparmetros foram fixados para preservar o controle experimental, de modo que no 
+se compararam verses otimizadas de cada algoritmo. Por fim, cada frao corresponde a um nico 
+subconjunto estratificado externo; repeties dessa amostragem ampliariam a generalizao da 
+inferncia sobre tamanho. Ainda assim, o pareamento exato e as 30 
+seeds
+ por condio reduzem o 
+risco de atribuir a um classificador uma diferena produzida apenas pela composio do split. 
+CO
+CLUSÍES 
+A comparao demonstrou que o tamanho amostral altera de maneira significativa a relao 
+entre Random Forest e SVM linear na classificao morfolgica das galxias avaliadas. O Random 
+Forest manteve ganhos de acurcia e F1 macro at o conjunto completo, enquanto a SVM linear 
+!"#$%&
+\(\)*
++,-".,/#
+\(01
+234*
+6#,"&
+\(01
+234*
+17¼ CONICT 2026
+ISSN: 2178-9959
+estabilizou aps as primeiras fraes; consequentemente, a diferena entre os modelos aumentou. Ao 
+mesmo tempo, a disperso entre 
+seeds
+ diminuiu em ambos, confirmando que mais dados tornam os 
+resultados menos dependentes de uma partio especfica. No foram encontradas evidncias de que a 
+escolha do PRNG modificasse o desempenho ou a diferena entre classificadores. Portanto, a 
+contribuio central deste trabalho mostrou que comparaes confiveis exigem mltiplas 
+seeds
+manifestos compartilhados e anlise pareada. Como continuidade, recomenda-se repetir a amostragem 
+externa, avaliar SVMs no lineares e aprofundar o comportamento das classes 
+early-type
+ e irregular. 
+AGRADECIME
+TOS
+Os autores agradecem ao "Grupo de Pesquisa OMITIDO" e ao "Grupo de Pesquisa 
+OMITIDOÓ, ambos do OMITIDO, pelo apoio ao desenvolvimento deste trabalho. 
+REFERæ
+CIAS
+BARCHI, P. H. et al. 
+Machine and Deep Learning applied to galaxy morphology: a comparative 
+study.
+ Astronomy and Computing, v. 30, 100334, 2020. DOI: https://doi.org/10.1016/ 
+j.ascom.2019.100334. 
+BREIMAN, L. 
+Random forests. Machine Learning
+, v. 45, p. 5-32, 2001. DOI: https://doi.org/ 
+10.1023/A:1010933404324. 
+CORTES, C.; VAPNIK, V. 
+Support-vector networks. Machine Learning
+, v. 20, p. 273-297, 1995. 
+DOI: https://doi.org/10.1007/BF00994018. 
+FRIEDMAN, M. 
+The use of ranks to avoid the assumption of normality implicit in the analysis of 
+variance
+. Journal of the American Statistical Association, v. 32, n. 200, p. 675-701, 1937. DOI: 
+https://doi.org/10.1080/01621459.1937.10503522. 
+HOLM, S. 
+A simple sequentially rejective multiple test procedure
+. Scandinavian Journal of 
+Statistics, v. 6, n. 2, p. 65-70, 1979. DOI: https://doi.org/10.2307/4615733. 
+MATSUMOTO, M.; NISHIMURA, T. 
+Mersenne Twister: a 623-dimensionally equidistributed 
+uniform pseudo-random number generator
+. ACM Transactions on Modeling and Computer 
+Simulation, v. 8, n. 1, p. 3-30, 1998. DOI: https://doi.org/10.1145/272991.272995. 
+O'NEILL, M. E. 
+PCG: a family of simple fast space-efficient statistically good algorithms for 
+random number generation.
+ Claremont: Harvey Mudd College, 2014. Technical Report HMC-
+CS-2014-0905. Disponvel em: https://www.pcg-random.org/pdf/hmc-cs-2014-0905.pdf. 
+PEDREGOSA, F. et al. 
+Scikit-learn: machine learning in Python. Journal of Machine Learning 
+Research
+, v. 12, p. 2825-2830, 2011. Disponvel em: https://www.jmlr.org/papers/v12/ 
+pedregosa11a.html. 
+SCARLATA, C. et al. 
+COSMOS morphological classification with the Zurich Estimator of 
+Structural Types \(ZEST\) and the evolution since z=1 of the luminosity function of early, disk, 
+and irregular galaxies
+. The Astrophysical Journal Supplement Series, v. 172, n. 1, p. 406-433, 2007. 
+DOI: https://doi.org/10.1086/516582. 
+SREEJITH, S. et al. 
+Galaxy And Mass Assembly: automatic morphological classification of 
+galaxies using statistical learning
+. Monthly Notices of the Royal Astronomical Society, v. 474, n. 4, 
+p. 5232-5258, 2018. DOI: https://doi.org/10.1093/mnras/stx2976. 
+WILCOXON, F. 
+Individual comparisons by ranking methods
+. Biometrics Bulletin, v. 1, n. 6, p. 
+80-83, 1945. DOI: https://doi.org/10.2307/3001968. 
+17¼ CONICT 2026
+ISSN: 2178-9959
