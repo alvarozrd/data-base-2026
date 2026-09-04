@@ -233,3 +233,18 @@ SELECT *
 FROM CLIENTES2;
 GO
 
+-- QUESTAO 7
+
+-- Enunciado resumido:
+-- Excluir a tabela CLIENTES2.
+
+-- Resposta:
+
+DROP TABLE CLIENTES2;
+GO
+
+-- Explicacao:
+-- DROP TABLE remove a tabela inteira do banco de dados.
+-- Depois desse comando, a estrutura e os registros de CLIENTES2 deixam de
+-- existir. Para usar CLIENTES2 novamente, seria necessario cria-la outra vez.
+
