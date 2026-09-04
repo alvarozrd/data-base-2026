@@ -68,3 +68,48 @@ FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'CLIENTES';
 GO
 
+-- QUESTAO 2
+
+-- Enunciado resumido:
+-- Atualizar os registros dos clientes cadastrados, preenchendo os campos DDD
+-- e Telefone.
+
+-- Observacao:
+-- A figura 03 nao esta no repositorio. Por isso, os valores abaixo foram
+-- organizados de forma coerente com os registros criados na lista 02 e com as
+-- questoes seguintes desta lista. Alguns clientes ficam sem DDD ou com DDD
+-- igual a 11 para que a questao 5 possa demonstrar a exclusao solicitada.
+
+-- Resposta:
+
+UPDATE CLIENTES SET DDD = '35', Telefone = '997040800' WHERE ID = 1;
+UPDATE CLIENTES SET DDD = '11', Telefone = '366815500' WHERE ID = 2;
+UPDATE CLIENTES SET DDD = '35', Telefone = '998010200' WHERE ID = 3;
+UPDATE CLIENTES SET DDD = NULL, Telefone = '366450000' WHERE ID = 4;
+UPDATE CLIENTES SET DDD = '11', Telefone = '366420010' WHERE ID = 5;
+UPDATE CLIENTES SET DDD = '35', Telefone = '997770600' WHERE ID = 6;
+UPDATE CLIENTES SET DDD = NULL, Telefone = '366390000' WHERE ID = 7;
+UPDATE CLIENTES SET DDD = '19', Telefone = '996660800' WHERE ID = 8;
+UPDATE CLIENTES SET DDD = '35', Telefone = '999990900' WHERE ID = 9;
+UPDATE CLIENTES SET DDD = '35', Telefone = '366215150' WHERE ID = 10;
+UPDATE CLIENTES SET DDD = '11', Telefone = '995551100' WHERE ID = 11;
+UPDATE CLIENTES SET DDD = '15', Telefone = '994441200' WHERE ID = 12;
+UPDATE CLIENTES SET DDD = '35', Telefone = NULL        WHERE ID = 13;
+UPDATE CLIENTES SET DDD = NULL, Telefone = NULL        WHERE ID = 14;
+UPDATE CLIENTES SET DDD = NULL, Telefone = '993331500' WHERE ID = 15;
+GO
+
+-- Explicacao:
+-- UPDATE altera os dados de registros ja cadastrados.
+-- SET informa quais colunas receberao novos valores.
+-- WHERE ID = ... garante que apenas o cliente indicado seja atualizado.
+-- Quando DDD ou Telefone recebe NULL, significa que o dado nao foi cadastrado.
+
+-- Conferencia:
+-- A consulta abaixo exibe os clientes depois das atualizacoes.
+
+SELECT ID, Nome, DDD, Telefone
+FROM CLIENTES
+ORDER BY ID ASC;
+GO
+
