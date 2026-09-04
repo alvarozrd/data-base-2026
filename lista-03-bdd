@@ -29,23 +29,18 @@ GO
 SELECT * FROM CLIENTES;
 GO
 
--- EXERCICIOS
+-- EXERCICIOSSSS
 
 -- QUESTAO 1
-
--- Enunciado resumido:
 -- Alterar a estrutura da tabela CLIENTES, adicionando as colunas DDD e
 -- Telefone. A coluna DDD deve usar CHAR(2), e a coluna Telefone deve usar
 -- CHAR(10).
-
--- Resposta:
 
 ALTER TABLE CLIENTES
     ADD DDD CHAR(2) NULL,
         Telefone CHAR(10) NULL;
 GO
 
--- Explicacao:
 -- ALTER TABLE modifica a estrutura de uma tabela ja existente.
 -- ADD indica que novas colunas serao adicionadas.
 -- As colunas foram definidas como NULL para permitir que existam clientes
@@ -53,7 +48,6 @@ GO
 -- CHAR(2) armazena exatamente 2 caracteres para o DDD.
 -- CHAR(10) armazena exatamente 10 caracteres para o telefone.
 
--- Conferencia:
 -- A consulta abaixo mostra novamente a estrutura da tabela CLIENTES para
 -- verificar se as colunas DDD e Telefone foram adicionadas corretamente.
 
@@ -69,8 +63,6 @@ WHERE TABLE_NAME = 'CLIENTES';
 GO
 
 -- QUESTAO 2
-
--- Enunciado resumido:
 -- Atualizar os registros dos clientes cadastrados, preenchendo os campos DDD
 -- e Telefone.
 
@@ -80,7 +72,6 @@ GO
 -- questoes seguintes desta lista. Alguns clientes ficam sem DDD ou com DDD
 -- igual a 11 para que a questao 5 possa demonstrar a exclusao solicitada.
 
--- Resposta:
 
 UPDATE CLIENTES SET DDD = '35', Telefone = '997040800' WHERE ID = 1;
 UPDATE CLIENTES SET DDD = '11', Telefone = '366815500' WHERE ID = 2;
@@ -99,13 +90,11 @@ UPDATE CLIENTES SET DDD = NULL, Telefone = NULL        WHERE ID = 14;
 UPDATE CLIENTES SET DDD = NULL, Telefone = '993331500' WHERE ID = 15;
 GO
 
--- Explicacao:
 -- UPDATE altera os dados de registros ja cadastrados.
 -- SET informa quais colunas receberao novos valores.
 -- WHERE ID = ... garante que apenas o cliente indicado seja atualizado.
 -- Quando DDD ou Telefone recebe NULL, significa que o dado nao foi cadastrado.
 
--- Conferencia:
 -- A consulta abaixo exibe os clientes depois das atualizacoes.
 
 SELECT ID, Nome, DDD, Telefone
@@ -114,13 +103,9 @@ ORDER BY ID ASC;
 GO
 
 -- QUESTAO 3
-
--- Enunciado resumido:
 -- Copiar os dados da tabela CLIENTES para uma tabela temporaria global chamada
 -- ##clientesCOPIA, adicionar uma chave primaria nomeada na coluna ID e exibir
 -- as restricoes existentes nessa nova tabela.
-
--- Resposta:
 
 SELECT *
 INTO ##clientesCOPIA
@@ -139,7 +124,6 @@ FROM tempdb.INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS tc
 WHERE tc.TABLE_NAME LIKE '##clientesCOPIA%';
 GO
 
--- Explicacao:
 -- SELECT INTO cria uma nova tabela com base no resultado de uma consulta.
 -- Como a questao pede uma tabela temporaria global no SQL Server, o nome da
 -- tabela recebe dois sinais de cerquilha: ##clientesCOPIA.
@@ -151,12 +135,8 @@ GO
 -- restricoes da tabela temporaria, pois tabelas temporarias ficam no tempdb.
 
 -- QUESTAO 4
-
--- Enunciado resumido:
 -- Copiar para uma nova tabela chamada CLIENTES2 apenas os clientes que possuem
 -- telefone cadastrado.
-
--- Resposta:
 
 SELECT *
 INTO CLIENTES2
@@ -164,12 +144,10 @@ FROM CLIENTES
 WHERE Telefone IS NOT NULL;
 GO
 
--- Explicacao:
 -- SELECT INTO cria a tabela CLIENTES2 e copia os dados selecionados.
 -- WHERE Telefone IS NOT NULL filtra apenas os clientes cujo telefone foi
 -- preenchido. Registros com telefone NULL ficam fora da copia.
 
--- Conferencia:
 -- A consulta abaixo exibe os registros inseridos na tabela CLIENTES2.
 
 SELECT *
@@ -178,12 +156,9 @@ ORDER BY ID ASC;
 GO
 
 -- QUESTAO 5
-
--- Enunciado resumido:
 -- Remover da tabela CLIENTES2 os clientes que nao possuem DDD cadastrado ou
 -- cujo DDD seja igual a 11. Exibir a tabela antes e depois da exclusao.
 
--- Resposta:
 
 -- Antes da exclusao:
 SELECT *
@@ -211,22 +186,16 @@ GO
 -- registro ser excluido.
 
 -- QUESTAO 6
-
--- Enunciado resumido:
 -- Excluir todos os registros da tabela CLIENTES2 usando TRUNCATE.
-
--- Resposta:
 
 TRUNCATE TABLE CLIENTES2;
 GO
-
--- Explicacao:
 -- TRUNCATE TABLE remove todos os registros da tabela de forma direta.
 -- Diferentemente do DELETE usado sem WHERE, o TRUNCATE nao remove linha por
 -- linha e nao permite escolher registros especificos.
 -- A estrutura da tabela CLIENTES2 continua existindo, mas fica sem dados.
 
--- Conferencia:
+
 -- A consulta abaixo mostra que a tabela CLIENTES2 ficou vazia.
 
 SELECT *
@@ -235,27 +204,21 @@ GO
 
 -- QUESTAO 7
 
--- Enunciado resumido:
 -- Excluir a tabela CLIENTES2.
-
--- Resposta:
 
 DROP TABLE CLIENTES2;
 GO
 
--- Explicacao:
 -- DROP TABLE remove a tabela inteira do banco de dados.
 -- Depois desse comando, a estrutura e os registros de CLIENTES2 deixam de
 -- existir. Para usar CLIENTES2 novamente, seria necessario cria-la outra vez.
 
 -- QUESTAO 8
 
--- Enunciado resumido:
 -- Atualizar a cliente Fernanda Pereira, alterando o e-mail para
 -- fernanda.pereira@uol.com.br e o DDD para 15. Depois, exibir o conteudo da
 -- tabela CLIENTES.
 
--- Resposta:
 
 UPDATE CLIENTES
 SET Email = 'fernanda.pereira@uol.com.br',
@@ -268,7 +231,6 @@ FROM CLIENTES
 ORDER BY ID ASC;
 GO
 
--- Explicacao:
 -- UPDATE altera os dados da cliente ja cadastrada.
 -- SET modifica as colunas Email e DDD ao mesmo tempo.
 -- WHERE Nome = 'Fernanda Pereira' limita a alteracao apenas a essa cliente.
