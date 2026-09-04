@@ -210,3 +210,26 @@ GO
 -- O operador OR significa que basta uma das condicoes ser verdadeira para o
 -- registro ser excluido.
 
+-- QUESTAO 6
+
+-- Enunciado resumido:
+-- Excluir todos os registros da tabela CLIENTES2 usando TRUNCATE.
+
+-- Resposta:
+
+TRUNCATE TABLE CLIENTES2;
+GO
+
+-- Explicacao:
+-- TRUNCATE TABLE remove todos os registros da tabela de forma direta.
+-- Diferentemente do DELETE usado sem WHERE, o TRUNCATE nao remove linha por
+-- linha e nao permite escolher registros especificos.
+-- A estrutura da tabela CLIENTES2 continua existindo, mas fica sem dados.
+
+-- Conferencia:
+-- A consulta abaixo mostra que a tabela CLIENTES2 ficou vazia.
+
+SELECT *
+FROM CLIENTES2;
+GO
+
