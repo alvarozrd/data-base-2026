@@ -113,3 +113,40 @@ FROM CLIENTES
 ORDER BY ID ASC;
 GO
 
+-- QUESTAO 3
+
+-- Enunciado resumido:
+-- Copiar os dados da tabela CLIENTES para uma tabela temporaria global chamada
+-- ##clientesCOPIA, adicionar uma chave primaria nomeada na coluna ID e exibir
+-- as restricoes existentes nessa nova tabela.
+
+-- Resposta:
+
+SELECT *
+INTO ##clientesCOPIA
+FROM CLIENTES;
+GO
+
+ALTER TABLE ##clientesCOPIA
+    ADD CONSTRAINT PK_clientesCOPIA PRIMARY KEY (ID);
+GO
+
+SELECT  tc.CONSTRAINT_CATALOG AS 'Banco de Dados',
+        tc.TABLE_NAME         AS 'Tabela',
+        tc.CONSTRAINT_TYPE    AS 'Tipo de Restricao',
+        tc.CONSTRAINT_NAME    AS 'Nome da Restricao'
+FROM tempdb.INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS tc
+WHERE tc.TABLE_NAME LIKE '##clientesCOPIA%';
+GO
+
+-- Explicacao:
+-- SELECT INTO cria uma nova tabela com base no resultado de uma consulta.
+-- Como a questao pede uma tabela temporaria global no SQL Server, o nome da
+-- tabela recebe dois sinais de cerquilha: ##clientesCOPIA.
+-- A tabela temporaria global pode ser acessada por outras sessoes enquanto
+-- a sessao que a criou ainda estiver aberta.
+-- ALTER TABLE ADD CONSTRAINT cria a restricao PK_clientesCOPIA.
+-- PRIMARY KEY (ID) define a coluna ID como identificador unico da tabela.
+-- A consulta em tempdb.INFORMATION_SCHEMA.TABLE_CONSTRAINTS exibe as
+-- restricoes da tabela temporaria, pois tabelas temporarias ficam no tempdb.
+
