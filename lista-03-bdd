@@ -1,0 +1,70 @@
+-- habilita o contexto do banco Loja IFSP
+IF DB_ID (N'LojaIFSP') IS NULL
+    PRINT 'O Bando de Dados LojaIFSP não existe!';
+ELSE
+    USE LojaIFSP;
+GO
+
+-- Exibe a data de criação e o nome das tabelas
+-- que existem no banco de dados em uso
+
+SELECT  create_date AS 'Data de Criação',
+        name AS 'Nome da Tabela'
+FROM sys.tables;
+GO 
+
+-- exibe infos sobre a estrutura da tabela
+SELECT  TABLE_CATALOG       AS 'Banco de Dados',
+        TABLE_NAME          AS 'Tabela',
+        ORDINAL_POSITION    AS 'Posição',
+        COLUMN_NAME         AS 'Coluna',
+        DATA_TYPE           AS 'Tipo de dado',
+        COLLATION_NAME      AS 'Tipo de Coluna',
+        IS_NULLABLE         AS 'Aceita Nulo?'
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'CLIENTES';
+GO
+
+-- exibe todos os registros da tabela CLIENTES
+SELECT * FROM CLIENTES;
+GO
+
+-- EXERCICIOS
+
+-- QUESTAO 1
+
+-- Enunciado resumido:
+-- Alterar a estrutura da tabela CLIENTES, adicionando as colunas DDD e
+-- Telefone. A coluna DDD deve usar CHAR(2), e a coluna Telefone deve usar
+-- CHAR(10).
+
+-- Resposta:
+
+ALTER TABLE CLIENTES
+    ADD DDD CHAR(2) NULL,
+        Telefone CHAR(10) NULL;
+GO
+
+-- Explicacao:
+-- ALTER TABLE modifica a estrutura de uma tabela ja existente.
+-- ADD indica que novas colunas serao adicionadas.
+-- As colunas foram definidas como NULL para permitir que existam clientes
+-- sem codigo de area ou sem telefone cadastrado.
+-- CHAR(2) armazena exatamente 2 caracteres para o DDD.
+-- CHAR(10) armazena exatamente 10 caracteres para o telefone.
+
+-- Conferencia:
+-- A consulta abaixo mostra novamente a estrutura da tabela CLIENTES para
+-- verificar se as colunas DDD e Telefone foram adicionadas corretamente.
+
+SELECT  TABLE_CATALOG       AS 'Banco de Dados',
+        TABLE_NAME          AS 'Tabela',
+        ORDINAL_POSITION    AS 'Posicao',
+        COLUMN_NAME         AS 'Coluna',
+        DATA_TYPE           AS 'Tipo de Dado',
+        COLLATION_NAME      AS 'Tipo de Coluna',
+        IS_NULLABLE         AS 'Aceita Nulo?'
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'CLIENTES';
+GO
+
