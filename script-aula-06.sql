@@ -106,5 +106,4 @@ FROM MaioresSalarios
 Where Salário > 1500;
 
 EXEC sp_helptext MaioresSalarios;
-
-
+DROP VIEW MaioresSalarios;
