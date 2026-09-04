@@ -177,3 +177,36 @@ FROM CLIENTES2
 ORDER BY ID ASC;
 GO
 
+-- QUESTAO 5
+
+-- Enunciado resumido:
+-- Remover da tabela CLIENTES2 os clientes que nao possuem DDD cadastrado ou
+-- cujo DDD seja igual a 11. Exibir a tabela antes e depois da exclusao.
+
+-- Resposta:
+
+-- Antes da exclusao:
+SELECT *
+FROM CLIENTES2
+ORDER BY ID ASC;
+GO
+
+DELETE FROM CLIENTES2
+WHERE DDD IS NULL
+   OR DDD = '11';
+GO
+
+-- Depois da exclusao:
+SELECT *
+FROM CLIENTES2
+ORDER BY ID ASC;
+GO
+
+-- Explicacao:
+-- DELETE remove registros de uma tabela.
+-- WHERE limita a exclusao somente aos registros que atendem ao criterio.
+-- DDD IS NULL identifica clientes sem codigo de area cadastrado.
+-- OR DDD = '11' tambem remove clientes cujo codigo de area seja 11.
+-- O operador OR significa que basta uma das condicoes ser verdadeira para o
+-- registro ser excluido.
+
