@@ -150,3 +150,30 @@ GO
 -- A consulta em tempdb.INFORMATION_SCHEMA.TABLE_CONSTRAINTS exibe as
 -- restricoes da tabela temporaria, pois tabelas temporarias ficam no tempdb.
 
+-- QUESTAO 4
+
+-- Enunciado resumido:
+-- Copiar para uma nova tabela chamada CLIENTES2 apenas os clientes que possuem
+-- telefone cadastrado.
+
+-- Resposta:
+
+SELECT *
+INTO CLIENTES2
+FROM CLIENTES
+WHERE Telefone IS NOT NULL;
+GO
+
+-- Explicacao:
+-- SELECT INTO cria a tabela CLIENTES2 e copia os dados selecionados.
+-- WHERE Telefone IS NOT NULL filtra apenas os clientes cujo telefone foi
+-- preenchido. Registros com telefone NULL ficam fora da copia.
+
+-- Conferencia:
+-- A consulta abaixo exibe os registros inseridos na tabela CLIENTES2.
+
+SELECT *
+FROM CLIENTES2
+ORDER BY ID ASC;
+GO
+
