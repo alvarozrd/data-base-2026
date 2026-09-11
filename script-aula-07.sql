@@ -1,5 +1,7 @@
 use empresaCJ3037916;
 
+-- Cria a tabela DEPENDENTES para armazenar os dados dos dependentes dos funcionários.
+-- A coluna ID cria o relacionamento com a chave primária da tabela FUNCIONARIOS.
 CREATE TABLE DEPENDENTES (
     CodDependentes INT PRIMARY KEY,
     Nome VARCHAR(35) NOT NULL,
@@ -9,10 +11,14 @@ CREATE TABLE DEPENDENTES (
 FUNCIONARIOS (ID)
 );
 
+-- Exibe todos os registros cadastrados na tabela DEPENDENTES.
 SELECT * FROM DEPENDENTES;
 
+-- Define o formato de data como ano, mês e dia para ler corretamente o arquivo CSV.
 SET DATEFORMAT YMD;
 
+-- Importa os dados do arquivo dependentes.csv para dentro da tabela DEPENDENTES.
+-- FIRSTROW = 2 ignora a primeira linha do arquivo, que normalmente contém cabeçalhos.
 BULK INSERT DEPENDENTES
     FROM '/dados/dependentes.csv'
 WITH(
@@ -21,20 +27,24 @@ WITH(
     FIELDTERMINATOR = ','
 );
 
+-- Confere os dados importados em DEPENDENTES e os dados existentes em FUNCIONARIOS.
 SELECT * FROM DEPENDENTES;
 SELECT * FROM FUNCIONARIOS;
 
--- sintaxe mais antiga
+-- Sintaxe mais antiga de junção entre tabelas, sem usar a palavra JOIN.
+-- O resultado combina cada funcionário com cada dependente, formando um produto cartesiano.
 SELECT *
 FROM FUNCIONARIOS, DEPENDENTES;
 
 
--- sintaxe utilizando CROSS JOIN 
+-- Sintaxe utilizando CROSS JOIN para gerar explicitamente o produto cartesiano.
+-- Cada linha de FUNCIONARIOS é combinada com todas as linhas de DEPENDENTES.
 SELECT * 
 FROM FUNCIONARIOS CROSS JOIN 
 DEPENDENTES;
 
--- nomeando cada tabela
+-- Usa apelidos para as tabelas: F representa FUNCIONARIOS e D representa DEPENDENTES.
+-- Isso deixa a consulta mais curta e ajuda a identificar de qual tabela vem cada coluna.
 SELECT  F.ID                AS 'Código do Funcionário',
         F.Nome              AS 'Nome do Funcionário',
         D.Nome              AS 'Nome do Depependente',
@@ -42,7 +52,8 @@ SELECT  F.ID                AS 'Código do Funcionário',
 FROM FUNCIONARIOS F CROSS JOIN DEPENDENTES D;
 
 
--- exibe somente o registro do funcionário que possuí algum dependente
+-- INNER JOIN entre funcionários e dependentes.
+-- Exibe somente funcionários que possuem dependente correspondente na tabela DEPENDENTES.
 SELECT 
     F.ID        AS 'Código do Funcionário',
     F.Nome      AS 'Nome do Funcionário',
@@ -53,7 +64,8 @@ FROM FUNCIONARIOS F JOIN DEPENDENTES D
     ON F.ID = D.ID;
 
 
--- apenas aqueles que nasceram depois de 2000's
+-- INNER JOIN com filtro de data de nascimento.
+-- Exibe somente dependentes nascidos a partir do ano 2000 e ordena por funcionário e dependente.
 SELECT 
     F.ID                AS 'Código do Funcionário',
     F.Nome              AS 'Nome do Funcionário',
@@ -66,8 +78,10 @@ FROM FUNCIONARIOS F JOIN DEPENDENTES D
 WHERE YEAR(D.DataNascimento) >= 2000
 ORDER BY F.Nome, D.Nome;
 
+-- Altera o formato de data para dia, mês e ano antes de inserir novos funcionários.
 SET DATEFORMAT DMY;
 
+-- Insere novos registros na tabela FUNCIONARIOS para ampliar os exemplos de JOIN.
 INSERT INTO FUNCIONARIOS VALUES
 (11, 'Ana Cláudia', 'F', '12/09/2011', 4900.00, '3663-9090'),
 (12, 'André Lima', 'M', '05/11/2009', 2050.00, '3664-8989'),
@@ -78,6 +92,8 @@ INSERT INTO FUNCIONARIOS VALUES
 
 
 
+-- LEFT OUTER JOIN partindo de FUNCIONARIOS.
+-- Mantém todos os funcionários, mesmo quando não existe dependente relacionado.
 SELECT  F. ID       AS 'ID',
         F.Nome      AS 'Funcionánio',
         F.Admissao  AS 'Admissão',
@@ -88,9 +104,8 @@ FROM FUNCIONARIOS F LEFT OUTER JOIN DEPENDENTES D
 ON F.ID = D.ID;
 
 
--- Exibe as informações de todos os funcionarios e de seus dependentes
--- utilizando RIGHT JOIN
-
+-- RIGHT OUTER JOIN partindo de DEPENDENTES para FUNCIONARIOS.
+-- Como FUNCIONARIOS está do lado direito, a consulta mantém todos os funcionários.
 SELECT F.ID				AS 'ID',
        F.Nome			AS 'Funcionário',
 	   F.Admissao		AS 'Admissão',
@@ -102,6 +117,8 @@ FROM DEPENDENTES D RIGHT OUTER JOIN FUNCIONARIOS F
 GO
 
 
+-- LEFT OUTER JOIN partindo de DEPENDENTES para FUNCIONARIOS.
+-- Como DEPENDENTES está do lado esquerdo, a consulta mantém todos os dependentes.
 SELECT F.ID				AS 'ID',
        F.Nome			AS 'Funcionário',
 	   F.Admissao		AS 'Admissão',
@@ -114,6 +131,8 @@ GO
 
 
 
+-- FULL OUTER JOIN entre DEPENDENTES e FUNCIONARIOS.
+-- Exibe registros correspondentes e também registros sem correspondência em qualquer uma das tabelas.
 SELECT F.ID				AS 'ID',
        F.Nome			AS 'Funcionário',
 	   F.Admissao		AS 'Admissão',
@@ -125,6 +144,8 @@ FROM DEPENDENTES D FULL OUTER JOIN FUNCIONARIOS F
 GO
 
 
+-- Conta dependentes usando INNER JOIN.
+-- Como a consulta usa INNER JOIN, entram apenas funcionários que possuem dependentes relacionados.
 SELECT  F.ID AS 'ID',
         F.Nome AS 'Funcionários',
         COUNT(F.ID) AS 'Total de Dependentes'
@@ -133,7 +154,8 @@ FROM FUNCIONARIOS F INNER JOIN DEPENDENTES D
 GROUP BY F.ID, F.Nome;
 
 
--- lógica correta
+-- Lógica correta para contar dependentes considerando funcionários sem dependentes.
+-- COUNT(D.ID) conta apenas dependentes encontrados, sem contar automaticamente o funcionário.
 SELECT  F.ID AS 'ID',
         F.Nome AS 'Funcionários',
         COUNT(D.ID) AS 'Total de Dependentes'
