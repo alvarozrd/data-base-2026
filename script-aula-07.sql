@@ -47,7 +47,7 @@ DEPENDENTES;
 -- Isso deixa a consulta mais curta e ajuda a identificar de qual tabela vem cada coluna.
 SELECT  F.ID                AS 'Código do Funcionário',
         F.Nome              AS 'Nome do Funcionário',
-        D.Nome              AS 'Nome do Depependente',
+        D.Nome              AS 'Nome do Dependente',
         D.DataNascimento    AS 'Data de Nascimento'
 FROM FUNCIONARIOS F CROSS JOIN DEPENDENTES D;
 
@@ -94,12 +94,12 @@ INSERT INTO FUNCIONARIOS VALUES
 
 -- LEFT OUTER JOIN partindo de FUNCIONARIOS.
 -- Mantém todos os funcionários, mesmo quando não existe dependente relacionado.
-SELECT  F. ID       AS 'ID',
-        F.Nome      AS 'Funcionánio',
-        F.Admissao  AS 'Admissão',
-        F.Salario   AS 'Salário',
-        D. Nome     AS 'Dependente',
-        D. DataNascimento AS 'Data de Nascimento'
+SELECT  F.ID                AS 'ID',
+        F.Nome              AS 'Funcionário',
+        F.Admissao          AS 'Admissão',
+        F.Salario           AS 'Salário',
+        D.Nome              AS 'Dependente',
+        D.DataNascimento    AS 'Data de Nascimento'
 FROM FUNCIONARIOS F LEFT OUTER JOIN DEPENDENTES D
 ON F.ID = D.ID;
 
