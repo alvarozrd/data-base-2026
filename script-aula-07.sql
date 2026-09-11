@@ -66,3 +66,23 @@ FROM FUNCIONARIOS F JOIN DEPENDENTES D
 WHERE YEAR(D.DataNascimento) >= 2000
 ORDER BY F.Nome, D.Nome;
 
+SET DATEFORMAT DMY;
+
+INSERT INTO FUNCIONARIOS VALUES
+(11, 'Ana Cláudia', 'F', '12/09/2011', 4900.00, '3663-9090'),
+(12, 'André Lima', 'M', '05/11/2009', 2050.00, '3664-8989'),
+(13, 'Marcos Souza', 'M', '02/10/2009', 3800.00, NULL),
+(14, 'Mariana Gomes', 'F', '19/11/2018', 1758.50, NULL),
+(15, 'Cinthia Faria', 'F', '18/07/2016', 1758.58, '3662-1212');
+
+
+
+
+SELECT  F. ID       AS 'ID',
+        F.Nome      AS 'Funcionánio',
+        F.Admissao  AS 'Admissão',
+        F.Salario   AS 'Salário',
+        D. Nome     AS 'Dependente',
+        D. DataNascimento AS 'Data de Nascimento'
+FROM FUNCIONARIOS F LEFT OUTER JOIN DEPENDENTES D
+ON F.ID = D.ID;
