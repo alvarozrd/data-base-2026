@@ -100,3 +100,43 @@ SELECT F.ID				AS 'ID',
 FROM DEPENDENTES D RIGHT OUTER JOIN FUNCIONARIOS F 
 	ON F.ID = D.ID;
 GO
+
+
+SELECT F.ID				AS 'ID',
+       F.Nome			AS 'Funcionário',
+	   F.Admissao		AS 'Admissão',
+	   F.Salario		AS 'Salário',
+	   D.Nome			AS 'Dependente',
+	   D.DataNascimento	AS 'Data de Nascimento'
+FROM DEPENDENTES D LEFT OUTER JOIN FUNCIONARIOS F 
+	ON F.ID = D.ID;
+GO
+
+
+
+SELECT F.ID				AS 'ID',
+       F.Nome			AS 'Funcionário',
+	   F.Admissao		AS 'Admissão',
+	   F.Salario		AS 'Salário',
+	   D.Nome			AS 'Dependente',
+	   D.DataNascimento	AS 'Data de Nascimento'
+FROM DEPENDENTES D FULL OUTER JOIN FUNCIONARIOS F 
+	ON F.ID = D.ID;
+GO
+
+
+SELECT  F.ID AS 'ID',
+        F.Nome AS 'Funcionários',
+        COUNT(F.ID) AS 'Total de Dependentes'
+FROM FUNCIONARIOS F INNER JOIN DEPENDENTES D
+    ON F.ID = D.ID
+GROUP BY F.ID, F.Nome;
+
+
+-- lógica correta
+SELECT  F.ID AS 'ID',
+        F.Nome AS 'Funcionários',
+        COUNT(D.ID) AS 'Total de Dependentes'
+FROM FUNCIONARIOS F FULL OUTER JOIN DEPENDENTES D
+    ON F.ID = D.ID
+GROUP BY F.ID, F.Nome;
