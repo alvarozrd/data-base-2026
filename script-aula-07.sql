@@ -34,4 +34,20 @@ SELECT *
 FROM FUNCIONARIOS CROSS JOIN 
 DEPENDENTES;
 
+-- nomeando cada tabela
+SELECT  F.ID                AS 'Código do Funcionário',
+        F.Nome              AS 'Nome do Funcionário',
+        D.Nome              AS 'Nome do Depependente',
+        D.DataNascimento    AS 'Data de Nascimento'
+FROM FUNCIONARIOS F CROSS JOIN DEPENDENTES D;
 
+
+-- exibe somente o registro do funcionário que possuí algum dependente
+SELECT 
+    F.ID        AS 'Código do Funcionário',
+    F.Nome      AS 'Nome do Funcionário',
+    F.Salario   AS 'Salário',
+    D.Nome      AS 'Nome do Dependente',
+    D.ID        AS 'Código do Responsável'
+FROM FUNCIONARIOS F JOIN DEPENDENTES D
+    ON F.ID = D.ID;
