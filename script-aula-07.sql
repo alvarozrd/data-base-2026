@@ -86,3 +86,17 @@ SELECT  F. ID       AS 'ID',
         D. DataNascimento AS 'Data de Nascimento'
 FROM FUNCIONARIOS F LEFT OUTER JOIN DEPENDENTES D
 ON F.ID = D.ID;
+
+
+-- Exibe as informações de todos os funcionarios e de seus dependentes
+-- utilizando RIGHT JOIN
+
+SELECT F.ID				AS 'ID',
+       F.Nome			AS 'Funcionário',
+	   F.Admissao		AS 'Admissão',
+	   F.Salario		AS 'Salário',
+	   D.Nome			AS 'Dependente',
+	   D.DataNascimento	AS 'Data de Nascimento'
+FROM DEPENDENTES D RIGHT OUTER JOIN FUNCIONARIOS F 
+	ON F.ID = D.ID;
+GO
