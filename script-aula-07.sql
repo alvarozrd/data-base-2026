@@ -51,3 +51,18 @@ SELECT
     D.ID        AS 'Código do Responsável'
 FROM FUNCIONARIOS F JOIN DEPENDENTES D
     ON F.ID = D.ID;
+
+
+-- apenas aqueles que nasceram depois de 2000's
+SELECT 
+    F.ID                AS 'Código do Funcionário',
+    F.Nome              AS 'Nome do Funcionário',
+    F.Salario           AS 'Salário',
+    D.Nome              AS 'Nome do Dependente',
+    D.DataNascimento    AS 'Data de Nascimento',
+    D.ID                AS 'Código do Responsável'
+FROM FUNCIONARIOS F JOIN DEPENDENTES D
+    ON F.ID = D.ID
+WHERE YEAR(D.DataNascimento) >= 2000
+ORDER BY F.Nome, D.Nome;
+
