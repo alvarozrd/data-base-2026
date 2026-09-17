@@ -536,13 +536,13 @@ SELECT
 FROM ALUNOSCOPIA;
 GO 
 
--- realiza a união, sem exibir os registros duplicados
+-- realiza a união, exibindo os registros duplicados
 SELECT 
     CodAluno    AS 'Código',
     NomeAluno   AS 'Nome do Aluno',
     Genero      AS 'Gênero'
 FROM ALUNOS
-    UNION
+    UNION ALL
 SELECT 
     CodAluno    AS 'Código',
     NomeAluno   AS 'Nome do Aluno',
@@ -550,3 +550,8 @@ SELECT
 FROM AlunosCOPIA
 ORDER BY CodAluno, NomeAluno;
 GO
+
+SELECT 
+    CodAluno    AS 'Código',
+    NomeAluno   AS 'Nome do Aluno',
+    Genero      AS 'Gênero',
