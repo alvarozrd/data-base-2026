@@ -575,3 +575,20 @@ SELECT
 FROM AlunosCOPIA
 ORDER BY CodAluno, NomeAluno;
 GO
+
+
+-- O MINUS/EXCEPT Retorna somente os registeros que existem na primeira consulta
+
+SELECT 
+    CodAluno    AS 'Código',
+    NomeAluno   AS 'Nome do Aluno',
+    Genero      AS 'Gênero'
+FROM ALUNOS
+    EXCEPT
+SELECT 
+    CodAluno    AS 'Código',
+    NomeAluno   AS 'Nome do Aluno',
+    Genero      AS 'Gênero'
+FROM AlunosCOPIA
+ORDER BY CodAluno, NomeAluno;
+GO
