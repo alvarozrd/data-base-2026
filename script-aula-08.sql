@@ -492,5 +492,28 @@ GO
 
 
 --------------------------------------------------------------------------------
--- FIM!
+--Parte do código gerado na aula
 --------------------------------------------------------------------------------
+
+
+SELECT  name        AS 'Nome da Tabela',
+        create_date AS 'Data de Criação'
+FROM sys.tables;
+GO
+
+SELECT TABLE_NAME AS "Nome da Tabela"
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE' AND 
+        TABLE_CATALOG = 'INTERCAMBIO_alp';
+GO
+
+SELECT  CodPais     AS 'Código do País',
+        NomePais    AS 'Nome do País',
+        IdiomaPais  AS 'Idioma Principal'
+FROM PAISES;
+GO
+
+SELECT * FROM VIAGENS;
+GO
+
+
