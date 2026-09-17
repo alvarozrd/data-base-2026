@@ -555,3 +555,23 @@ SELECT
     CodAluno    AS 'Código',
     NomeAluno   AS 'Nome do Aluno',
     Genero      AS 'Gênero',
+    CodViagem   AS 'Código da Viagem'
+FROM ALUNOSCOPIA;
+GO 
+
+
+-- Retorna somente os registros que existem nas duas consultas
+
+SELECT 
+    CodAluno    AS 'Código',
+    NomeAluno   AS 'Nome do Aluno',
+    Genero      AS 'Gênero'
+FROM ALUNOS
+    INTERSECT
+SELECT 
+    CodAluno    AS 'Código',
+    NomeAluno   AS 'Nome do Aluno',
+    Genero      AS 'Gênero'
+FROM AlunosCOPIA
+ORDER BY CodAluno, NomeAluno;
+GO
