@@ -516,4 +516,37 @@ GO
 SELECT * FROM VIAGENS;
 GO
 
+SELECT 
+    CodAluno    AS 'Código',
+    NomeAluno   AS 'Nome do Aluno',
+    Endereco    AS 'Endereço',
+    Genero      AS 'Gênero',
+    PaisOrigem  AS 'Origem',
+    CodViagem   AS 'Código da Viagem'
+FROM ALUNOS;
+GO 
 
+SELECT 
+    CodAluno    AS 'Código',
+    NomeAluno   AS 'Nome do Aluno',
+    Endereco    AS 'Endereço',
+    Genero      AS 'Gênero',
+    PaisOrigem  AS 'Origem',
+    CodViagem   AS 'Código da Viagem'
+FROM ALUNOSCOPIA;
+GO 
+
+-- realiza a união, sem exibir os registros duplicados
+SELECT 
+    CodAluno    AS 'Código',
+    NomeAluno   AS 'Nome do Aluno',
+    Genero      AS 'Gênero'
+FROM ALUNOS
+    UNION
+SELECT 
+    CodAluno    AS 'Código',
+    NomeAluno   AS 'Nome do Aluno',
+    Genero      AS 'Gênero'
+FROM AlunosCOPIA
+ORDER BY CodAluno, NomeAluno;
+GO
