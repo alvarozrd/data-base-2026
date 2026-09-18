@@ -617,3 +617,16 @@ WHERE CodPais IN(
     SELECT PaisDestino FROM VIAGENS
 );
 GO
+
+SELECT P.CodPais AS 'Código',
+    P.NomePais   AS 'País de Destino',
+    COUNT(CodPais) AS 'Total de Viagens'
+FROM PAISES P INNER JOIN ViAGENS V 
+    ON P.CodPais = V.PaisDestino
+GROUP BY P.CodPais, P.NomePais
+HAVING COUNT(P.CodPais) >= (
+    SELECT COUNT(PaisDestino) FROM VIAGENS
+    WHERE PaisDestino = 'MEX'
+);
+GO
+
