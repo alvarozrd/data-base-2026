@@ -592,3 +592,18 @@ SELECT
 FROM AlunosCOPIA
 ORDER BY CodAluno, NomeAluno;
 GO
+
+
+-- Exibe os dados dos países utilizados como destinos nas viagens dos alunos, cujo código seja 'USA''
+
+SELECT CodPais      AS 'Código do País',
+       NomePais     AS 'Nome do País',
+       IdiomaPais   AS 'Idioma'
+FROM PAISES
+WHERE CodPais = (
+    SELECT DISTINCT PaisDestino
+    FROM VIAGENS 
+    WHERE PaisDestino = 'USA'
+);
+GO
+
