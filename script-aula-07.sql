@@ -162,3 +162,21 @@ SELECT  F.ID AS 'ID',
 FROM FUNCIONARIOS F FULL OUTER JOIN DEPENDENTES D
     ON F.ID = D.ID
 GROUP BY F.ID, F.Nome;
+
+
+
+SELECT      Nome AS 'Nome',
+            ID   AS 'Código',
+            Ende  AS 'Endereço'
+FROM table1;
+GO 
+
+
+
+SELECT      T1.Nome AS 'Nome',
+            T1.ID   AS 'Código',
+            T1.Ende  AS 'Endereço',
+            T2.amount AS 'Salário'
+
+FROM table1 T1 JOIN table2 T2 ON T1.ID = T2.Id-funci;
+

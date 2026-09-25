@@ -20,14 +20,14 @@ GO
 
 -- CRIACAO DA TABELA CLIENTES
 
--- CREATE TABLE CLIENTES (
---     ID INT PRIMARY KEY,
---     Nome VARCHAR(50) NOT NULL,
---     Sexo CHAR(1) NULL,
---     Idade INT CHECK (Idade > 18) NOT NULL,
---     CPF CHAR(11) UNIQUE NOT NULL,
---     Email VARCHAR(200) DEFAULT 'meu@email.com' NOT NULL
--- );
+CREATE TABLE CLIENTES (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(50) NOT NULL,
+    Sexo CHAR(1) NULL,
+    Idade INT CHECK (Idade > 18) NOT NULL,
+    CPF CHAR(11) UNIQUE NOT NULL,
+    Email VARCHAR(200) DEFAULT 'meu@email.com' NOT NULL
+);
 
 -- Explicacao das restricoes:
 
