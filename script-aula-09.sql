@@ -82,3 +82,54 @@ EXEC SP_HELPLANGUAGE [Brazilian];
 EXEC SP_HELPLANGUAGE [Japanese];
 EXEC SP_HELPLANGUAGE [English];
 
+--DECLARA VARIAVEL PARA ARMAZENAR A DATA ATUAL
+DECLARE @data DATETIME;
+SET @data = GETDATE();
+
+--EXIBE INFORMAÇÕES SOBRE A DATA ATUAL
+SELECT @data AS 'Data Atual',
+		DATEPART(DAY, @data) AS 'Dia do Mês',
+		DATENAME(DW, @data) AS 'Dia da Semana',
+		DATEPART(MONTH, @data) AS 'Mês',
+		DATENAME(MONTH, @data) AS 'Nome do Mês',
+		DATEPART(YEAR, @data) AS 'Ano';
+
+--DECLARA VARIAVEL PARA ARMAZENAR A DATA ATUAL
+DECLARE @data DATETIME;
+SET @data = GETDATE();
+
+SELECT @data AS 'Data Atual',
+		DATENAME(DW, @data) AS 'Dia da Semana',
+		DATENAME(WK, @data) AS 'Semana do Ano',
+		DATENAME(M, @data) AS 'Nome do Mês',
+		DATENAME(D, @data) AS 'Dia do Mês',
+		DATENAME(DY, @data) AS 'Dia do Ano';
+
+------------------------------
+SET LANGUAGE Brazilian;
+DECLARE @data DATETIME;
+SET @data = GETDATE();
+
+--EXIBE IDIOMA, DIA DA SEMANA E NOME DO MES
+SELECT @@LANGUAGE AS 'Idioma',
+		DATENAME (DW, @data) AS 'Dia da Semana',
+		DATENAME (M, @data) AS 'Nome do Mês';
+
+--
+SET DATEFORMAT DMY;
+IF ISDATE ('20/01/2015 00:10:50.000') = 1
+	PRINT 'Data Válida!';
+ELSE
+	PRINT 'Data Inválida!';
+
+--
+SET DATEFORMAT MDY;
+IF ISDATE ('20/01/2015 00:10:50.000') = 1
+	PRINT 'Data Válida!';
+ELSE
+	PRINT 'Data Inválida!';
+
+--
+SET LANGUAGE us_english;
+SET DATEFORMAT MDY;
+
