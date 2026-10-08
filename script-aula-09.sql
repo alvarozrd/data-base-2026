@@ -37,3 +37,48 @@ SET @data2 = GETDATE();
 SET @data2 = GETDATE();
 
 
+SELECT  @data1 AS 'Data Inicial',
+		@data2 AS 'Data de Hoje',
+		DATEDIFF(DAY, @data1, @data2) AS 'Qtd. Dias',
+		DATEDIFF(MONTH, @data1, @data2) AS 'Qtd. Meses',
+		DATEDIFF(HOUR, @data1, @data2) AS 'Qtd. Horas';
+
+SELECT  GETDATE() AS 'Data Atual',
+		DATEADD(MONTH, 5, GETDATE()) AS 'Proximos 5 Meses',
+		EOMONTH(GETDATE(), 5) AS 'Final do mês (Daqui 5 meses)',
+		SWITCHOFFSET(GETDATE(), '+10:00') AS 'Alteração de Fuso-horário (+10 Horas)';
+
+SELECT  @@LANGUAGE AS 'Idioma Utilizado',
+		@@DATEFIRST AS 'Primeiro dia da Semana';
+
+--Demonstra a utilização do comando SELECT.. CASE
+SELECT @@LANGUAGE AS 'Idioma Utilizado',
+	CASE
+		WHEN @@DATEFIRST = 1 THEN 'Segunda-Feira'
+		WHEN @@DATEFIRST = 2 THEN 'Terça-Feira'
+		WHEN @@DATEFIRST = 3 THEN 'Quarta-Feira'
+		WHEN @@DATEFIRST = 4 THEN 'Quinta-Feira'
+		WHEN @@DATEFIRST = 5 THEN 'Sexta-Feira'
+		WHEN @@DATEFIRST = 6 THEN 'Sábado'
+		WHEN @@DATEFIRST = 7 THEN 'Domingo'
+	END AS 'Primeiro Dia da Semana'
+
+SELECT * from sys.syslanguages;
+
+--RETORNA INFORMAÇOES FORMATADAS SOBRE ALGUNS IDIOMAS
+SELECT  langid AS 'ID do Idioma',
+		dateformat AS 'Formato da Data',
+		datefirst AS 'Primeiro dia da Semana',
+		name AS 'Nome do Idioma',
+		alias AS 'Nome Alternativo do Idioma',
+		months AS 'Nome dos meses',
+		shortmonths AS 'Abreviatura dos meses',
+		days AS 'Nomes dos Dias'
+	FROM sys.syslanguages
+	WHERE alias IN ('English', 'Brazilian', 'German', 'Japanese', 'Russian');
+
+--RETORNA INFORMAÇOES SOBRE ALGUNS IDIOMAS
+EXEC SP_HELPLANGUAGE [Brazilian];
+EXEC SP_HELPLANGUAGE [Japanese];
+EXEC SP_HELPLANGUAGE [English];
+
