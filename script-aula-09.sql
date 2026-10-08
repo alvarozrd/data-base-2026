@@ -133,3 +133,36 @@ ELSE
 SET LANGUAGE us_english;
 SET DATEFORMAT MDY;
 
+--
+SELECT ASCII ('A') AS 'ASCII: A',
+		UNICODE('A') AS 'UNICODE: A',
+		CHAR(65) AS 'CHAR: 65',
+		NCHAR(65) AS 'NCHAR: 65',
+		ASCII(N'私') AS 'ASCII: 私',
+		UNICODE(N'私') AS 'UNICODE: 私',
+		CHAR(31169) AS 'CHAR: 31169',
+		NCHAR(31169) AS 'NCHAR: 31169',
+		CHARINDEX('S', 'Microsoft SQL') AS 'CHARINDEX: S',
+		CHARINDEX('SQL', 'Microsoft SQL') AS 'CHARINDEX: SQL';
+
+SELECT 'Matheus' + 'Magalhaes' AS 'SPACE 1',
+		'Matheus' + ' ' + 'Magalhaes' AS 'SPACE 2',
+		'Matheus' + SPACE(10) + 'Magalhaes' AS 'SPACE 3',
+		QUOTENAME('Matheus Magalhaes', '{') AS 'QUOTENAME 1',
+		QUOTENAME('Matheus Magalhaes', '"') AS 'QUOTENAME 2',
+		QUOTENAME('Matheus Magalhaes', '[') AS 'QUOTENAME 3',
+		STR(100) AS 'STR 1',
+		STR(100.0) AS 'STR 2',
+		STR(100.45, 6, 2) AS 'STR 3',
+		LEN('Matheus Magalhaes') AS 'LEN 1';
+
+--DEMONSTRA PATINDEX
+SELECT PATINDEX('soft', 'Microsoft SQL') AS 'PATINDEX 1',
+		PATINDEX('%soft%', 'Microsoft SQL') AS 'PATINDEX 2';
+
+--DEMONSTRA SOUNDEX E DIFFERENCE
+SELECT SOUNDEX ('Matheus') AS 'SOUNDEX: Matheus',
+		SOUNDEX ('Matthew') AS 'SOUNDEX: Matthew',
+		SOUNDEX ('João') AS 'SOUNDEX: João',
+		DIFFERENCE('Matheus', 'Matthew') AS 'DIFF 1',
+		DIFFERENCE('Matheus', 'João') AS 'DIFF 2';
