@@ -19,3 +19,11 @@ SELECT  NomeAluno AS 'Nome do Aluno',
 FROM ALUNOS;
 GO
 
+---
+
+SELECT  CONCAT( 'Paulo', 'Giovani') AS 'CONCAT',
+        CONCAT( 'Rua ', 'João XXIII, ', '15', ' - São Pualo') AS 'Endereço',
+        STUFF('Paulo Giovani', 2, 1, 'TEXTO') AS 'STUFF',
+        REVERSE('Paulo Giovani') AS 'REVERSE',
+        REPLICATE(' * ', 10) AS 'REPLICATE 1', 'Paulo' + REPLICATE('.', 5) + ': ' + '6666-6666' AS 'REPLICATE 2';
+GO
