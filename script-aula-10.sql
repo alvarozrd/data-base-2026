@@ -27,3 +27,17 @@ SELECT  CONCAT( 'Paulo', 'Giovani') AS 'CONCAT',
         REVERSE('Paulo Giovani') AS 'REVERSE',
         REPLICATE(' * ', 10) AS 'REPLICATE 1', 'Paulo' + REPLICATE('.', 5) + ': ' + '6666-6666' AS 'REPLICATE 2';
 GO
+
+--- 
+
+SET LANGUAGE Brazilian;
+GO
+
+SELECT NomeAluno AS 'Nome do Aluno',
+        DATEPART(DAY, DataNasc) AS 'Dia',
+        DATENAME(DW, DataNasc)  As 'Dia da Semana',
+        DATENAME(M, DataNasc)   AS 'Nome do Mês',
+        DATEPART(YEAR, DataNasc) AS 'Ano',
+        CONCAT(DATENAME(DW, DataNasc), ', ', DATEPART(DAY, DataNasc), ' de ', DATENAME(M, DataNasc), ' de ', DATEPART(YEAR, DataNasc), '. ') AS 'Data de Nascimento'
+FROM ALUNOS;
+GO
