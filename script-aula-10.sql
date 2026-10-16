@@ -66,3 +66,13 @@ DECLARE @valor AS DECIMAL(5, 2) = 156.90;
 SELECT  CAST(@valor AS CHAR(20))       AS 'CAST',
         CONVERT(DECIMAL(10,5), @valor) AS 'CONVERT';
 GO
+
+---
+
+DECLARE @valor AS INT = 100;
+
+SELECT  CAST(@valor AS CHAR(20))            AS 'CAST1',
+        CAST(@valor AS DECIMAL(10, 5))      AS 'CAST2',
+        CONVERT(CHAR(20), @valor)           AS 'CONVERT1',
+        CONVERT(DECIMAL(10,5), @valor)      AS 'CONVERT2'
+GO
