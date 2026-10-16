@@ -3,7 +3,7 @@ GO
 
 --DECLARANDO AS VARIAVEIS EM T-SQL
 DECLARE @dia AS INT,
-		@mes AS CHAR(20),
+		@mes AS INT,
 		@ano AS int,
 		@data1 AS DATE,
 		@data2 AS DATETIME;
@@ -21,6 +21,7 @@ SELECT  @dia   AS 'Dia',
 		@ano   AS 'Ano',
 		@data1 AS 'Data 1',
 		@data2 AS 'Data 2';
+GO
 
 --DECLARA DUAS DATAS
 DECLARE @data1 AS DATE,
@@ -34,14 +35,12 @@ SET @data1 = '01/01/2024';
 SET @data2 = GETDATE();
 
 
-SET @data2 = GETDATE();
-
-
 SELECT  @data1 AS 'Data Inicial',
 		@data2 AS 'Data de Hoje',
 		DATEDIFF(DAY, @data1, @data2) AS 'Qtd. Dias',
 		DATEDIFF(MONTH, @data1, @data2) AS 'Qtd. Meses',
 		DATEDIFF(HOUR, @data1, @data2) AS 'Qtd. Horas';
+GO
 
 SELECT  GETDATE() AS 'Data Atual',
 		DATEADD(MONTH, 5, GETDATE()) AS 'Proximos 5 Meses',
@@ -93,6 +92,7 @@ SELECT @data AS 'Data Atual',
 		DATEPART(MONTH, @data) AS 'Mês',
 		DATENAME(MONTH, @data) AS 'Nome do Mês',
 		DATEPART(YEAR, @data) AS 'Ano';
+GO
 
 --DECLARA VARIAVEL PARA ARMAZENAR A DATA ATUAL
 DECLARE @data DATETIME;
@@ -104,9 +104,11 @@ SELECT @data AS 'Data Atual',
 		DATENAME(M, @data) AS 'Nome do Mês',
 		DATENAME(D, @data) AS 'Dia do Mês',
 		DATENAME(DY, @data) AS 'Dia do Ano';
+GO
 
 ------------------------------
 SET LANGUAGE Brazilian;
+GO
 DECLARE @data DATETIME;
 SET @data = GETDATE();
 
