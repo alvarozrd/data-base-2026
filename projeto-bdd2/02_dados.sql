@@ -241,3 +241,173 @@ INSERT INTO ORIENTACOES VALUES
 GO
 
 
+-- BANCAS (TCCs concluidos; a nota do suplente da producao 2 nao foi lancada)
+INSERT INTO BANCAS VALUES
+    (1, 1, 'Presidente', 9.00, '2023-11-28'),
+    (1, 3, 'Avaliador', 8.50, '2023-11-28'),
+    (1, 8, 'Avaliador', 8.00, '2023-11-28'),
+    (2, 2, 'Presidente', 9.50, '2024-06-20'),
+    (2, 1, 'Avaliador', 9.00, '2024-06-20'),
+    (2, 8, 'Avaliador', 9.20, '2024-06-20'),
+    (2, 7, 'Suplente', NULL, '2024-06-20'),
+    (10, 2, 'Presidente', 7.50, '2022-12-05'),
+    (10, 1, 'Avaliador', 7.00, '2022-12-05'),
+    (10, 7, 'Avaliador', 8.00, '2022-12-05'),
+    (13, 2, 'Presidente', 8.80, '2023-12-04'),
+    (13, 7, 'Avaliador', 8.00, '2023-12-04'),
+    (13, 8, 'Avaliador', 8.40, '2023-12-04'),
+    (16, 1, 'Presidente', 9.10, '2022-11-30'),
+    (16, 3, 'Avaliador', 8.70, '2022-11-30'),
+    (16, 8, 'Avaliador', 9.00, '2022-11-30'),
+    (21, 6, 'Presidente', 8.20, '2023-12-06'),
+    (21, 5, 'Avaliador', 7.80, '2023-12-06'),
+    (21, 8, 'Avaliador', 8.00, '2023-12-06'),
+    (26, 5, 'Presidente', 9.40, '2023-12-11'),
+    (26, 4, 'Avaliador', 9.00, '2023-12-11'),
+    (26, 6, 'Avaliador', 9.20, '2023-12-11');
+GO
+
+
+-- PRODUCAO_PALAVRA (palavras-chave de cada producao)
+INSERT INTO PRODUCAO_PALAVRA VALUES
+    (1, 1), (1, 2),
+    (2, 4),
+    (3, 6),
+    (4, 7), (4, 8),
+    (5, 1), (5, 2),
+    (6, 4), (6, 5),
+    (7, 6),
+    (8, 1), (8, 3),
+    (9, 8), (9, 13),
+    (10, 4),
+    (11, 14), (11, 13),
+    (12, 1),
+    (13, 4),
+    (14, 7),
+    (15, 6), (15, 15),
+    (16, 1), (16, 2), (16, 3),
+    (17, 13), (17, 10),
+    (18, 14), (18, 10),
+    (19, 8),
+    (20, 15), (20, 10),
+    (21, 11),
+    (22, 11), (22, 12),
+    (23, 11), (23, 12),
+    (24, 11), (24, 13),
+    (25, 4),
+    (26, 9), (26, 10),
+    (27, 9),
+    (28, 9), (28, 10),
+    (29, 9), (29, 13),
+    (30, 9), (30, 10);
+GO
+
+
+-- PRODUCAO_REFERENCIA (referencias utilizadas por cada producao)
+INSERT INTO PRODUCAO_REFERENCIA VALUES
+    (1, 1), (1, 2),
+    (2, 3), (2, 4),
+    (3, 9),
+    (4, 10),
+    (5, 1), (5, 2), (5, 7),
+    (6, 3),
+    (7, 9),
+    (8, 1), (8, 5),
+    (9, 10),
+    (10, 3), (10, 4),
+    (11, 11),
+    (12, 2), (12, 6),
+    (13, 3),
+    (14, 10),
+    (15, 9),
+    (16, 1), (16, 6),
+    (17, 12),
+    (18, 11),
+    (19, 10),
+    (20, 9),
+    (21, 7), (21, 13),
+    (22, 7), (22, 8), (22, 13),
+    (23, 13),
+    (24, 8), (24, 13),
+    (25, 3),
+    (26, 12),
+    (27, 9), (27, 12),
+    (28, 12),
+    (29, 12),
+    (30, 7), (30, 12);
+GO
+
+
+-- HISTORICO_STATUS (30 registros: mudancas de situacao ocorridas ate hoje)
+INSERT INTO HISTORICO_STATUS VALUES
+    (1, 1, 'Em andamento', 'Concluída', '2023-11-28', 'Defesa realizada'),
+    (2, 2, 'Em andamento', 'Concluída', '2024-06-20', 'Defesa realizada'),
+    (3, 3, 'Em andamento', 'Concluída', '2024-07-10', NULL),
+    (4, 3, 'Concluída', 'Publicada', '2024-11-05', 'Artigo aceito em periódico'),
+    (5, 4, 'Em andamento', 'Concluída', '2025-06-30', 'Relatório final entregue'),
+    (6, 6, 'Em andamento', 'Concluída', '2024-08-12', NULL),
+    (7, 6, 'Concluída', 'Publicada', '2024-12-01', 'Artigo apresentado em congresso'),
+    (8, 8, 'Em andamento', 'Concluída', '2025-07-21', NULL),
+    (9, 8, 'Concluída', 'Publicada', '2025-10-02', 'Artigo publicado em anais'),
+    (10, 9, 'Em andamento', 'Concluída', '2024-11-18', 'Oficinas encerradas'),
+    (11, 10, 'Em andamento', 'Concluída', '2022-12-05', 'Defesa realizada'),
+    (12, 12, 'Em andamento', 'Cancelada', '2021-09-30', 'Projeto interrompido pelo aluno'),
+    (13, 13, 'Em andamento', 'Concluída', '2023-12-04', 'Defesa realizada'),
+    (14, 14, 'Em andamento', 'Concluída', '2024-11-25', 'Relatório final entregue'),
+    (15, 16, 'Em andamento', 'Concluída', '2022-11-30', 'Defesa realizada'),
+    (16, 17, 'Em andamento', 'Concluída', '2023-11-10', 'Oficinas encerradas'),
+    (17, 18, 'Em andamento', 'Concluída', '2025-06-02', NULL),
+    (18, 18, 'Concluída', 'Publicada', '2025-09-15', 'Artigo apresentado em congresso'),
+    (19, 20, 'Em andamento', 'Concluída', '2026-08-31', NULL),
+    (20, 21, 'Em andamento', 'Concluída', '2023-12-06', 'Defesa realizada'),
+    (21, 22, 'Em andamento', 'Concluída', '2024-10-14', 'Relatório final entregue'),
+    (22, 23, 'Em andamento', 'Concluída', '2025-07-07', NULL),
+    (23, 23, 'Concluída', 'Publicada', '2025-10-20', 'Artigo publicado em periódico'),
+    (24, 24, 'Em andamento', 'Concluída', '2024-09-23', 'Ação encerrada'),
+    (25, 25, 'Em andamento', 'Cancelada', '2022-08-15', 'Mudança de tema'),
+    (26, 26, 'Em andamento', 'Concluída', '2023-12-11', 'Defesa realizada'),
+    (27, 27, 'Em andamento', 'Concluída', '2024-11-04', 'Relatório final entregue'),
+    (28, 28, 'Em andamento', 'Concluída', '2025-06-23', NULL),
+    (29, 28, 'Concluída', 'Publicada', '2025-09-30', 'Artigo publicado em periódico'),
+    (30, 29, 'Em andamento', 'Concluída', '2025-11-10', 'Atividades encerradas');
+GO
+
+
+--------------------------------------------------------------------------------
+-- VERIFICACAO DA CARGA
+--------------------------------------------------------------------------------
+
+-- Quantidade de registros por tabela
+SELECT 'CURSOS' AS 'Tabela', COUNT(*) AS 'Registros' FROM CURSOS
+UNION ALL SELECT 'AREAS_TEMATICAS', COUNT(*) FROM AREAS_TEMATICAS
+UNION ALL SELECT 'TIPOS_PRODUCAO', COUNT(*) FROM TIPOS_PRODUCAO
+UNION ALL SELECT 'VEICULOS_PUBLICACAO', COUNT(*) FROM VEICULOS_PUBLICACAO
+UNION ALL SELECT 'PALAVRAS_CHAVE', COUNT(*) FROM PALAVRAS_CHAVE
+UNION ALL SELECT 'REFERENCIAS', COUNT(*) FROM REFERENCIAS
+UNION ALL SELECT 'PROFESSORES', COUNT(*) FROM PROFESSORES
+UNION ALL SELECT 'ALUNOS', COUNT(*) FROM ALUNOS
+UNION ALL SELECT 'PRODUCOES', COUNT(*) FROM PRODUCOES
+UNION ALL SELECT 'AUTORIAS', COUNT(*) FROM AUTORIAS
+UNION ALL SELECT 'ORIENTACOES', COUNT(*) FROM ORIENTACOES
+UNION ALL SELECT 'BANCAS', COUNT(*) FROM BANCAS
+UNION ALL SELECT 'PRODUCAO_PALAVRA', COUNT(*) FROM PRODUCAO_PALAVRA
+UNION ALL SELECT 'PRODUCAO_REFERENCIA', COUNT(*) FROM PRODUCAO_REFERENCIA
+UNION ALL SELECT 'HISTORICO_STATUS', COUNT(*) FROM HISTORICO_STATUS;
+GO
+
+-- Regra RN04 (todas as producoes devem ter ao menos um orientador).
+-- O resultado esperado e vazio (0 linhas).
+SELECT P.IdProducao, P.Titulo
+FROM PRODUCOES P LEFT JOIN ORIENTACOES O
+    ON P.IdProducao = O.IdProducao
+   AND O.TipoOrientacao = 'Orientador'
+WHERE O.IdProducao IS NULL;
+GO
+
+-- Regra RN03 (todas as producoes devem ter ao menos um autor).
+-- O resultado esperado e vazio (0 linhas).
+SELECT P.IdProducao, P.Titulo
+FROM PRODUCOES P LEFT JOIN AUTORIAS A
+    ON P.IdProducao = A.IdProducao
+WHERE A.IdProducao IS NULL;
+GO
