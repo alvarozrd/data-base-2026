@@ -96,3 +96,41 @@ INSERT INTO REFERENCIAS VALUES
 GO
 
 
+-- PROFESSORES (8 registros fictícios; o professor 8 so participa de bancas)
+INSERT INTO PROFESSORES VALUES
+    (1, '1000001', 'Marcos Vinícius Almeida', 'marcos.almeida@exemplo.edu.br', 'Doutor', '2012-02-01', '35990000001'),
+    (2, '1000002', 'Renata Cavalcante Souza', 'renata.souza@exemplo.edu.br', 'Mestre', '2014-08-18', NULL),
+    (3, '1000003', 'Sérgio Luiz Marques', 'sergio.marques@exemplo.edu.br', 'Doutor', '2010-03-15', '35990000003'),
+    (4, '1000004', 'Luciana Prates Barros', 'luciana.barros@exemplo.edu.br', 'Doutor', '2016-02-22', NULL),
+    (5, '1000005', 'Otávio Bastos Freire', 'otavio.freire@exemplo.edu.br', 'Mestre', '2018-07-02', '35990000005'),
+    (6, '1000006', 'Helena Carvalho Mendonça', 'helena.mendonca@exemplo.edu.br', 'Doutor', '2011-09-12', '35990000006'),
+    (7, '1000007', 'Roberto Kenji Tanaka', 'roberto.tanaka@exemplo.edu.br', 'Especialista', '2019-02-11', NULL),
+    (8, '1000008', 'Patrícia Nogueira Lins', 'patricia.lins@exemplo.edu.br', 'Mestre', '2020-03-09', '35990000008');
+GO
+
+
+-- ALUNOS (20 registros fictícios; o aluno 20 ainda nao possui producao)
+INSERT INTO ALUNOS VALUES
+    (1, 1, 'CJ9000001', 'Ana Beatriz Moura', 'ana.moura@aluno.exemplo.edu.br', '2021-02-01'),
+    (2, 1, 'CJ9000002', 'Bruno Henrique Lopes', 'bruno.lopes@aluno.exemplo.edu.br', '2021-02-01'),
+    (3, 1, 'CJ9000003', 'Camila Ferreira Dias', 'camila.dias@aluno.exemplo.edu.br', '2021-08-02'),
+    (4, 1, 'CJ9000004', 'Diego Martins Rocha', 'diego.rocha@aluno.exemplo.edu.br', '2022-02-01'),
+    (5, 1, 'CJ9000005', 'Eduarda Nunes Prado', 'eduarda.prado@aluno.exemplo.edu.br', '2022-02-01'),
+    (6, 1, 'CJ9000006', 'Felipe Augusto Vaz', 'felipe.vaz@aluno.exemplo.edu.br', '2022-08-01'),
+    (7, 1, 'CJ9000007', 'Gabriela Torres Leal', 'gabriela.leal@aluno.exemplo.edu.br', '2023-02-01'),
+    (8, 1, 'CJ9000008', 'Henrique Salles Braga', 'henrique.braga@aluno.exemplo.edu.br', '2023-02-01'),
+    (9, 2, 'CJ9000009', 'Isabela Cardoso Melo', 'isabela.melo@aluno.exemplo.edu.br', '2021-02-01'),
+    (10, 2, 'CJ9000010', 'João Pedro Antunes', 'joao.antunes@aluno.exemplo.edu.br', '2022-02-01'),
+    (11, 2, 'CJ9000011', 'Karina Duarte Pinto', 'karina.pinto@aluno.exemplo.edu.br', '2022-02-01'),
+    (12, 2, 'CJ9000012', 'Lucas Gabriel Faria', 'lucas.faria@aluno.exemplo.edu.br', '2023-02-01'),
+    (13, 2, 'CJ9000013', 'Marina Siqueira Reis', 'marina.reis@aluno.exemplo.edu.br', '2023-02-01'),
+    (14, 2, 'CJ9000014', 'Nicolas Barbosa Cunha', 'nicolas.cunha@aluno.exemplo.edu.br', '2024-02-01'),
+    (15, 3, 'CJ9000015', 'Olívia Mendes Teixeira', 'olivia.teixeira@aluno.exemplo.edu.br', '2021-02-01'),
+    (16, 3, 'CJ9000016', 'Paulo Ricardo Alves', 'paulo.alves@aluno.exemplo.edu.br', '2022-02-01'),
+    (17, 3, 'CJ9000017', 'Rafaela Campos Neri', 'rafaela.neri@aluno.exemplo.edu.br', '2022-02-01'),
+    (18, 4, 'CJ9000018', 'Samuel Oliveira Brito', 'samuel.brito@aluno.exemplo.edu.br', '2021-02-01'),
+    (19, 4, 'CJ9000019', 'Tatiana Gomes Ribeiro', 'tatiana.ribeiro@aluno.exemplo.edu.br', '2022-02-01'),
+    (20, 4, 'CJ9000020', 'Vinícius Prado Lacerda', 'vinicius.lacerda@aluno.exemplo.edu.br', '2024-02-01');
+GO
+
+
