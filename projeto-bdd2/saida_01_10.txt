@@ -64,3 +64,89 @@ Tatiana Gomes Ribeiro|Licenciatura em Física|2022
 Vinícius Prado Lacerda|Licenciatura em Física|2024
 
 (14 rows affected)
+=== CONSULTA 6 ===
+Código|Título|Data de Registro|Situação
+------|------|----------------|--------
+30|Avaliação de aprendizagem com mapas conceituais em Física|2026-03-23|Em andamento
+19|Configuração segura de servidores domésticos|2026-03-16|Em andamento
+11|Plataforma de divulgação de pequenos produtores locais|2026-03-09|Em andamento
+20|Aplicações de visão computacional na educação|2026-03-02|Concluída
+7|Chatbot para atendimento de dúvidas de matrícula|2025-09-01|Em andamento
+
+(5 rows affected)
+=== CONSULTA 7 ===
+Código|Título|Orientador|Titulação
+------|------|----------|---------
+21|Análise de umidade em edificações de clima de montanha|Helena Carvalho Mendonça|Doutor
+23|Conforto térmico em habitações populares|Helena Carvalho Mendonça|Doutor
+24|Orientação sobre manutenção preventiva residencial|Helena Carvalho Mendonça|Doutor
+22|Uso de materiais reciclados em blocos de concreto|Helena Carvalho Mendonça|Doutor
+20|Aplicações de visão computacional na educação|Luciana Prates Barros|Doutor
+3|Classificação de textos acadêmicos com aprendizado de máquina|Luciana Prates Barros|Doutor
+16|Cadastro de equipamentos do laboratório com banco relacional|Marcos Vinícius Almeida|Doutor
+8|Comparação de desempenho entre estratégias de consulta em bases acadêmicas|Marcos Vinícius Almeida|Doutor
+1|Modelagem relacional para um sistema de reservas de hospedagem|Marcos Vinícius Almeida|Doutor
+29|Clube de ciências itinerante|Otávio Bastos Freire|Mestre
+28|Ensino de astronomia com materiais acessíveis|Otávio Bastos Freire|Mestre
+26|Experimentos de baixo custo para o ensino de ondas|Otávio Bastos Freire|Mestre
+27|Simulações computacionais no ensino de eletromagnetismo|Otávio Bastos Freire|Mestre
+2|Aplicação web para gestão de manutenção predial|Renata Cavalcante Souza|Mestre
+13|Aplicativo de lista de tarefas para estudantes|Renata Cavalcante Souza|Mestre
+6|Boas práticas de testes automatizados em projetos de pequeno porte|Renata Cavalcante Souza|Mestre
+10|Sistema de agendamento para laboratórios de informática|Renata Cavalcante Souza|Mestre
+18|Empreendedorismo digital entre estudantes do ensino técnico|Roberto Kenji Tanaka|Especialista
+17|Programação para jovens: introdução à lógica|Roberto Kenji Tanaka|Especialista
+4|Análise de vulnerabilidades em redes Wi-Fi institucionais|Sérgio Luiz Marques|Doutor
+
+(20 rows affected)
+=== CONSULTA 8 ===
+Código|Título|Ano|Veículo
+------|------|---|-------
+4|Análise de vulnerabilidades em redes Wi-Fi institucionais|2025|Simpósio de Iniciação Científica do Campus
+7|Chatbot para atendimento de dúvidas de matrícula|2025|Sem veículo de publicação
+29|Clube de ciências itinerante|2025|Jornada de Extensão e Cultura
+8|Comparação de desempenho entre estratégias de consulta em bases acadêmicas|2025|International Conference on Applied Informatics
+23|Conforto térmico em habitações populares|2025|Revista Brasileira de Ensino de Ciências Aplicadas
+18|Empreendedorismo digital entre estudantes do ensino técnico|2025|Congresso Regional de Tecnologia da Mantiqueira
+28|Ensino de astronomia com materiais acessíveis|2025|Revista Brasileira de Ensino de Ciências Aplicadas
+5|Padronização de metadados de produções científicas|2025|Simpósio de Iniciação Científica do Campus
+15|Reconhecimento de padrões em imagens de plantas ornamentais|2025|Simpósio de Iniciação Científica do Campus
+20|Aplicações de visão computacional na educação|2026|Revista Mantiqueira de Computação
+30|Avaliação de aprendizagem com mapas conceituais em Física|2026|Sem veículo de publicação
+19|Configuração segura de servidores domésticos|2026|Sem veículo de publicação
+11|Plataforma de divulgação de pequenos produtores locais|2026|Sem veículo de publicação
+
+(13 rows affected)
+=== CONSULTA 9 ===
+Autor Principal|Curso|Título
+---------------|-----|------
+Ana Beatriz Moura|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Comparação de desempenho entre estratégias de consulta em bases acadêmicas
+Ana Beatriz Moura|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Modelagem relacional para um sistema de reservas de hospedagem
+Bruno Henrique Lopes|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Boas práticas de testes automatizados em projetos de pequeno porte
+Camila Ferreira Dias|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Aplicação web para gestão de manutenção predial
+Camila Ferreira Dias|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Banco de dados para gestão de acervo bibliográfico
+Diego Martins Rocha|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Classificação de textos acadêmicos com aprendizado de máquina
+Eduarda Nunes Prado|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Chatbot para atendimento de dúvidas de matrícula
+Felipe Augusto Vaz|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Análise de vulnerabilidades em redes Wi-Fi institucionais
+Felipe Augusto Vaz|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Oficina de segurança digital para a comunidade
+Gabriela Torres Leal|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Padronização de metadados de produções científicas
+Gabriela Torres Leal|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Plataforma de divulgação de pequenos produtores locais
+Henrique Salles Braga|Tecnologia em Análise e Desenvolvimento de Sistemas (Superior)|Sistema de agendamento para laboratórios de informática
+Isabela Cardoso Melo|Técnico em Informática (Técnico)|Aplicativo de lista de tarefas para estudantes
+Isabela Cardoso Melo|Técnico em Informática (Técnico)|Programação para jovens: introdução à lógica
+João Pedro Antunes|Técnico em Informática (Técnico)|Aplicações de visão computacional na educação
+João Pedro Antunes|Técnico em Informática (Técnico)|Monitoramento de rede em laboratório escolar
+Karina Duarte Pinto|Técnico em Informática (Técnico)|Empreendedorismo digital entre estudantes do ensino técnico
+Lucas Gabriel Faria|Técnico em Informática (Técnico)|Reconhecimento de padrões em imagens de plantas ornamentais
+Marina Siqueira Reis|Técnico em Informática (Técnico)|Cadastro de equipamentos do laboratório com banco relacional
+Marina Siqueira Reis|Técnico em Informática (Técnico)|Configuração segura de servidores domésticos
+
+(20 rows affected)
+=== CONSULTA 10 ===
+Código|Tipo|Situação|Referência
+------|----|--------|----------
+5|Livro|Ano não informado|DATE, C. J. Introdução a sistemas de bancos de dados.
+6|Livro|Ano não informado|MACHADO, F. N. R. Banco de dados: projeto e implementação.
+8|Norma|Anterior a 2000|ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS - ABNT. NBR 6024: numeração progressiva das seções de um documento. Rio de Janeiro, 1989.
+
+(3 rows affected)
