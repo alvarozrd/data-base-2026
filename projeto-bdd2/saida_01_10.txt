@@ -1,0 +1,66 @@
+Changed database context to 'ProducaoAcademica_CJ3037916'.
+=== CONSULTA 1 ===
+Código|Título|Tipo|Ano
+------|------|----|---
+8|Comparação de desempenho entre estratégias de consulta em bases acadêmicas|Artigo|2025
+23|Conforto térmico em habitações populares|Artigo|2025
+18|Empreendedorismo digital entre estudantes do ensino técnico|Artigo|2025
+28|Ensino de astronomia com materiais acessíveis|Artigo|2025
+6|Boas práticas de testes automatizados em projetos de pequeno porte|Artigo|2024
+3|Classificação de textos acadêmicos com aprendizado de máquina|Artigo|2024
+
+(6 rows affected)
+=== CONSULTA 2 ===
+Código|Título|Data de Registro|Situação
+------|------|----------------|--------
+2|Aplicação web para gestão de manutenção predial|2024-02-15|Concluída
+3|Classificação de textos acadêmicos com aprendizado de máquina|2024-03-05|Publicada
+14|Monitoramento de rede em laboratório escolar|2024-03-11|Concluída
+27|Simulações computacionais no ensino de eletromagnetismo|2024-03-18|Concluída
+22|Uso de materiais reciclados em blocos de concreto|2024-04-08|Concluída
+6|Boas práticas de testes automatizados em projetos de pequeno porte|2024-04-22|Publicada
+9|Oficina de segurança digital para a comunidade|2024-05-06|Concluída
+24|Orientação sobre manutenção preventiva residencial|2024-05-20|Concluída
+
+(8 rows affected)
+=== CONSULTA 3 ===
+Código|Título|Área Temática
+------|------|-------------
+18|Empreendedorismo digital entre estudantes do ensino técnico|Gestão e Empreendedorismo
+28|Ensino de astronomia com materiais acessíveis|Ensino de Física
+26|Experimentos de baixo custo para o ensino de ondas|Ensino de Física
+27|Simulações computacionais no ensino de eletromagnetismo|Ensino de Física
+
+(4 rows affected)
+=== CONSULTA 4 ===
+Código|Professor|Titulação|Telefone
+------|---------|---------|--------
+6|Helena Carvalho Mendonça|Doutor|35990000006
+4|Luciana Prates Barros|Doutor|Não informado
+1|Marcos Vinícius Almeida|Doutor|35990000001
+5|Otávio Bastos Freire|Mestre|35990000005
+8|Patrícia Nogueira Lins|Mestre|35990000008
+2|Renata Cavalcante Souza|Mestre|Não informado
+7|Roberto Kenji Tanaka|Especialista|Não informado
+3|Sérgio Luiz Marques|Doutor|35990000003
+
+(8 rows affected)
+=== CONSULTA 5 ===
+Aluno|Curso|Ano de Ingresso
+-----|-----|---------------
+Diego Martins Rocha|Tecnologia em Análise e Desenvolvimento de Sistemas|2022
+Eduarda Nunes Prado|Tecnologia em Análise e Desenvolvimento de Sistemas|2022
+Felipe Augusto Vaz|Tecnologia em Análise e Desenvolvimento de Sistemas|2022
+Gabriela Torres Leal|Tecnologia em Análise e Desenvolvimento de Sistemas|2023
+Henrique Salles Braga|Tecnologia em Análise e Desenvolvimento de Sistemas|2023
+João Pedro Antunes|Técnico em Informática|2022
+Karina Duarte Pinto|Técnico em Informática|2022
+Lucas Gabriel Faria|Técnico em Informática|2023
+Marina Siqueira Reis|Técnico em Informática|2023
+Nicolas Barbosa Cunha|Técnico em Informática|2024
+Paulo Ricardo Alves|Técnico em Edificações|2022
+Rafaela Campos Neri|Técnico em Edificações|2022
+Tatiana Gomes Ribeiro|Licenciatura em Física|2022
+Vinícius Prado Lacerda|Licenciatura em Física|2024
+
+(14 rows affected)
