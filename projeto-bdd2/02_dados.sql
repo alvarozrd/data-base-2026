@@ -24,7 +24,7 @@ GO
 
 -- AREAS_TEMATICAS (7 registros)
 INSERT INTO AREAS_TEMATICAS VALUES
-    (1, 'Banco de Dados', 'Modelagem, implementação e consulta de dados'),
+    (1, 'Banco de Dados', 'Modelagem, implementação e consulta de dados'),  
     (2, 'Engenharia de Software', 'Desenvolvimento, testes e manutenção de sistemas'),
     (3, 'Redes e Segurança', 'Infraestrutura de redes e segurança da informação'),
     (4, 'Inteligência Artificial', 'Aprendizado de máquina e visão computacional'),
