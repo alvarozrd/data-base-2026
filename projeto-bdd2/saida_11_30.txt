@@ -1,0 +1,48 @@
+Changed database context to 'ProducaoAcademica_CJ3037916'.
+=== CONSULTA 11 ===
+Curso|Total de Produções
+-----|------------------
+Tecnologia em Análise e Desenvolvimento de Sistemas|12
+Técnico em Informática|8
+Licenciatura em Física|5
+Técnico em Edificações|5
+
+(4 rows affected)
+=== CONSULTA 12 ===
+Curso|Nível|Total de Alunos
+-----|-----|---------------
+Tecnologia em Análise e Desenvolvimento de Sistemas|Superior|8
+Técnico em Informática|Técnico|6
+Licenciatura em Física|Superior|3
+Técnico em Edificações|Técnico|3
+Especialização em Ensino de Ciências|Pós-graduação|0
+
+(5 rows affected)
+=== CONSULTA 13 ===
+Situação|Total
+--------|-----
+Concluída|9
+Em andamento|6
+Publicada|6
+
+(3 rows affected)
+=== CONSULTA 14 ===
+Área Temática|Total de Produções
+-------------|------------------
+Engenharia de Software|6
+Banco de Dados|5
+Ensino de Física|5
+Construção Civil|4
+Inteligência Artificial|4
+Redes e Segurança|4
+
+(6 rows affected)
+=== CONSULTA 15 ===
+Código|Título|Notas Lançadas|Média da Banca
+------|------|--------------|--------------
+2|Aplicação web para gestão de manutenção predial|3|9.23
+26|Experimentos de baixo custo para o ensino de ondas|3|9.20
+16|Cadastro de equipamentos do laboratório com banco relacional|3|8.93
+1|Modelagem relacional para um sistema de reservas de hospedagem|3|8.50
+
+(4 rows affected)
