@@ -115,3 +115,130 @@ Código|Título|Total de Autores
 22|Uso de materiais reciclados em blocos de concreto|2
 
 (14 rows affected)
+=== CONSULTA 21 ===
+Código|Aluno
+------|-----
+1|Ana Beatriz Moura
+2|Bruno Henrique Lopes
+3|Camila Ferreira Dias
+4|Diego Martins Rocha
+5|Eduarda Nunes Prado
+11|Karina Duarte Pinto
+12|Lucas Gabriel Faria
+15|Olívia Mendes Teixeira
+16|Paulo Ricardo Alves
+18|Samuel Oliveira Brito
+19|Tatiana Gomes Ribeiro
+
+(11 rows affected)
+=== CONSULTA 22 ===
+Código|Aluno|Curso
+------|-----|-----
+20|Vinícius Prado Lacerda|Licenciatura em Física
+
+(1 rows affected)
+=== CONSULTA 23 ===
+Código|Professor|Titulação
+------|---------|---------
+8|Patrícia Nogueira Lins|Mestre
+
+(1 rows affected)
+=== CONSULTA 24 ===
+Nome|E-mail|Perfil
+----|------|------
+Ana Beatriz Moura|ana.moura@aluno.exemplo.edu.br|Aluno
+Bruno Henrique Lopes|bruno.lopes@aluno.exemplo.edu.br|Aluno
+Camila Ferreira Dias|camila.dias@aluno.exemplo.edu.br|Aluno
+Diego Martins Rocha|diego.rocha@aluno.exemplo.edu.br|Aluno
+Eduarda Nunes Prado|eduarda.prado@aluno.exemplo.edu.br|Aluno
+Felipe Augusto Vaz|felipe.vaz@aluno.exemplo.edu.br|Aluno
+Gabriela Torres Leal|gabriela.leal@aluno.exemplo.edu.br|Aluno
+Helena Carvalho Mendonça|helena.mendonca@exemplo.edu.br|Professor
+Henrique Salles Braga|henrique.braga@aluno.exemplo.edu.br|Aluno
+Isabela Cardoso Melo|isabela.melo@aluno.exemplo.edu.br|Aluno
+João Pedro Antunes|joao.antunes@aluno.exemplo.edu.br|Aluno
+Karina Duarte Pinto|karina.pinto@aluno.exemplo.edu.br|Aluno
+Lucas Gabriel Faria|lucas.faria@aluno.exemplo.edu.br|Aluno
+Luciana Prates Barros|luciana.barros@exemplo.edu.br|Professor
+Marcos Vinícius Almeida|marcos.almeida@exemplo.edu.br|Professor
+Marina Siqueira Reis|marina.reis@aluno.exemplo.edu.br|Aluno
+Nicolas Barbosa Cunha|nicolas.cunha@aluno.exemplo.edu.br|Aluno
+Olívia Mendes Teixeira|olivia.teixeira@aluno.exemplo.edu.br|Aluno
+Otávio Bastos Freire|otavio.freire@exemplo.edu.br|Professor
+Patrícia Nogueira Lins|patricia.lins@exemplo.edu.br|Professor
+
+(20 rows affected)
+=== CONSULTA 25 ===
+Código|Aluno
+------|-----
+1|Ana Beatriz Moura
+2|Bruno Henrique Lopes
+3|Camila Ferreira Dias
+11|Karina Duarte Pinto
+15|Olívia Mendes Teixeira
+16|Paulo Ricardo Alves
+18|Samuel Oliveira Brito
+19|Tatiana Gomes Ribeiro
+
+(8 rows affected)
+=== CONSULTA 26 ===
+Código|Professor
+------|---------
+8|Patrícia Nogueira Lins
+
+(1 rows affected)
+=== CONSULTA 27 ===
+Tipo de Produção|Total
+----------------|-----
+TCC|12
+Artigo|7
+Iniciação Científica|6
+Projeto de Extensão|5
+Relatório Técnico|0
+
+(5 rows affected)
+=== CONSULTA 28 ===
+Código|Título|Registro|Conclusão|Dias|Meses
+------|------|--------|---------|----|-----
+10|Sistema de agendamento para laboratórios de informática|2022-03-14|2022-12-05|266|9
+13|Aplicativo de lista de tarefas para estudantes|2023-03-13|2023-12-04|266|9
+1|Modelagem relacional para um sistema de reservas de hospedagem|2023-03-10|2023-11-28|263|8
+21|Análise de umidade em edificações de clima de montanha|2023-03-20|2023-12-06|261|9
+14|Monitoramento de rede em laboratório escolar|2024-03-11|2024-11-25|259|8
+26|Experimentos de baixo custo para o ensino de ondas|2023-03-27|2023-12-11|259|9
+16|Cadastro de equipamentos do laboratório com banco relacional|2022-03-21|2022-11-30|254|8
+27|Simulações computacionais no ensino de eletromagnetismo|2024-03-18|2024-11-04|231|8
+9|Oficina de segurança digital para a comunidade|2024-05-06|2024-11-18|196|6
+22|Uso de materiais reciclados em blocos de concreto|2024-04-08|2024-10-14|189|6
+
+(10 rows affected)
+=== CONSULTA 29 ===
+Código|Título|Data da Publicação
+------|------|------------------
+3|Classificação de textos acadêmicos com aprendizado de máquina|terça-feira, 5 de novembro de 2024
+6|Boas práticas de testes automatizados em projetos de pequeno porte|domingo, 1 de dezembro de 2024
+18|Empreendedorismo digital entre estudantes do ensino técnico|segunda-feira, 15 de setembro de 2025
+28|Ensino de astronomia com materiais acessíveis|terça-feira, 30 de setembro de 2025
+8|Comparação de desempenho entre estratégias de consulta em bases acadêmicas|quinta-feira, 2 de outubro de 2025
+23|Conforto térmico em habitações populares|segunda-feira, 20 de outubro de 2025
+
+(6 rows affected)
+=== CONSULTA 30 (criacao da view) ===
+=== CONSULTA 30 (uso da view) ===
+Código|Título|Curso|Tipo|Situação
+------|------|-----|----|--------
+30|Avaliação de aprendizagem com mapas conceituais em Física|Licenciatura em Física|TCC|Em andamento
+29|Clube de ciências itinerante|Licenciatura em Física|Projeto de Extensão|Concluída
+28|Ensino de astronomia com materiais acessíveis|Licenciatura em Física|Artigo|Publicada
+23|Conforto térmico em habitações populares|Técnico em Edificações|Artigo|Publicada
+20|Aplicações de visão computacional na educação|Técnico em Informática|Artigo|Concluída
+19|Configuração segura de servidores domésticos|Técnico em Informática|TCC|Em andamento
+18|Empreendedorismo digital entre estudantes do ensino técnico|Técnico em Informática|Artigo|Publicada
+15|Reconhecimento de padrões em imagens de plantas ornamentais|Técnico em Informática|Iniciação Científica|Em andamento
+4|Análise de vulnerabilidades em redes Wi-Fi institucionais|Tecnologia em Análise e Desenvolvimento de Sistemas|Iniciação Científica|Concluída
+7|Chatbot para atendimento de dúvidas de matrícula|Tecnologia em Análise e Desenvolvimento de Sistemas|TCC|Em andamento
+8|Comparação de desempenho entre estratégias de consulta em bases acadêmicas|Tecnologia em Análise e Desenvolvimento de Sistemas|Artigo|Publicada
+5|Padronização de metadados de produções científicas|Tecnologia em Análise e Desenvolvimento de Sistemas|Iniciação Científica|Em andamento
+11|Plataforma de divulgação de pequenos produtores locais|Tecnologia em Análise e Desenvolvimento de Sistemas|Projeto de Extensão|Em andamento
+
+(13 rows affected)
