@@ -46,3 +46,72 @@ Código|Título|Notas Lançadas|Média da Banca
 1|Modelagem relacional para um sistema de reservas de hospedagem|3|8.50
 
 (4 rows affected)
+=== CONSULTA 16 ===
+Professor|Total de Orientações
+---------|--------------------
+Renata Cavalcante Souza|7
+Marcos Vinícius Almeida|6
+Otávio Bastos Freire|6
+Helena Carvalho Mendonça|5
+Luciana Prates Barros|5
+Sérgio Luiz Marques|5
+Roberto Kenji Tanaka|3
+Patrícia Nogueira Lins|0
+
+(8 rows affected)
+=== CONSULTA 17 ===
+Professor|Papel na Banca|Participações
+---------|--------------|-------------
+Helena Carvalho Mendonça|Avaliador|1
+Helena Carvalho Mendonça|Presidente|1
+Luciana Prates Barros|Avaliador|1
+Marcos Vinícius Almeida|Avaliador|2
+Marcos Vinícius Almeida|Presidente|2
+Otávio Bastos Freire|Avaliador|1
+Otávio Bastos Freire|Presidente|1
+Patrícia Nogueira Lins|Avaliador|5
+Renata Cavalcante Souza|Presidente|3
+Roberto Kenji Tanaka|Avaliador|2
+Roberto Kenji Tanaka|Suplente|1
+Sérgio Luiz Marques|Avaliador|2
+
+(12 rows affected)
+=== CONSULTA 18 ===
+Palavra-chave|Total de Produções
+-------------|------------------
+educação|6
+banco de dados|5
+engenharia de software|5
+ensino de Física|5
+extensão|5
+
+(5 rows affected)
+=== CONSULTA 19 ===
+Código|Referência (início)|Citações
+------|-------------------|--------
+12|AUTOR FICTÍCIO D. Práticas de ensino de ciências e tecnologia. Anais E|6
+3|SOMMERVILLE, Ian. Engenharia de software. 9. ed. São Paulo: Pearson Pr|5
+9|AUTOR FICTÍCIO A. Aprendizado de máquina aplicado à educação. Revista |5
+1|ELMASRI, Ramez; NAVATHE, Shamkant B. Sistemas de banco de dados. 6. ed|4
+7|ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS - ABNT. NBR 6023: informação |4
+
+(5 rows affected)
+=== CONSULTA 20 ===
+Código|Título|Total de Autores
+------|------|----------------
+9|Oficina de segurança digital para a comunidade|3
+6|Boas práticas de testes automatizados em projetos de pequeno porte|2
+3|Classificação de textos acadêmicos com aprendizado de máquina|2
+29|Clube de ciências itinerante|2
+8|Comparação de desempenho entre estratégias de consulta em bases acadêmicas|2
+19|Configuração segura de servidores domésticos|2
+23|Conforto térmico em habitações populares|2
+18|Empreendedorismo digital entre estudantes do ensino técnico|2
+28|Ensino de astronomia com materiais acessíveis|2
+1|Modelagem relacional para um sistema de reservas de hospedagem|2
+14|Monitoramento de rede em laboratório escolar|2
+5|Padronização de metadados de produções científicas|2
+17|Programação para jovens: introdução à lógica|2
+22|Uso de materiais reciclados em blocos de concreto|2
+
+(14 rows affected)

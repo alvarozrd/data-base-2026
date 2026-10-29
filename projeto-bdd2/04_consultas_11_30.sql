@@ -79,3 +79,67 @@ ORDER BY AVG(B.Nota) DESC, P.Titulo ASC;
 GO
 
 
+PRINT '=== CONSULTA 16 ===';
+-- Finalidade: contar as orientacoes de cada professor, incluindo os que nao
+-- orientaram nenhuma producao.
+SELECT  PR.Nome                 AS 'Professor',
+        COUNT(O.IdProducao)     AS 'Total de Orientações'
+FROM PROFESSORES PR LEFT JOIN ORIENTACOES O
+    ON PR.IdProfessor = O.IdProfessor
+GROUP BY PR.IdProfessor, PR.Nome
+ORDER BY COUNT(O.IdProducao) DESC, PR.Nome ASC;
+GO
+
+
+PRINT '=== CONSULTA 17 ===';
+-- Finalidade: contar a participacao de cada professor em bancas, separada por
+-- papel (presidente, avaliador ou suplente).
+SELECT  PR.Nome     AS 'Professor',
+        B.Papel     AS 'Papel na Banca',
+        COUNT(*)    AS 'Participações'
+FROM BANCAS B INNER JOIN PROFESSORES PR
+    ON B.IdProfessor = PR.IdProfessor
+GROUP BY PR.Nome, B.Papel
+ORDER BY PR.Nome ASC, B.Papel ASC;
+GO
+
+
+PRINT '=== CONSULTA 18 ===';
+-- Finalidade: exibir as 5 palavras-chave mais utilizadas nas producoes.
+SELECT TOP 5
+        K.Termo                 AS 'Palavra-chave',
+        COUNT(PP.IdProducao)    AS 'Total de Produções'
+FROM PALAVRAS_CHAVE K INNER JOIN PRODUCAO_PALAVRA PP
+    ON K.IdPalavra = PP.IdPalavra
+GROUP BY K.Termo
+ORDER BY COUNT(PP.IdProducao) DESC, K.Termo ASC;
+GO
+
+
+PRINT '=== CONSULTA 19 ===';
+-- Finalidade: exibir as 5 referencias bibliograficas mais citadas, mostrando
+-- apenas os 70 primeiros caracteres do texto da referencia.
+SELECT TOP 5
+        R.IdReferencia                  AS 'Código',
+        LEFT(R.TextoReferencia, 70)     AS 'Referência (início)',
+        COUNT(PR2.IdProducao)           AS 'Citações'
+FROM REFERENCIAS R INNER JOIN PRODUCAO_REFERENCIA PR2
+    ON R.IdReferencia = PR2.IdReferencia
+GROUP BY R.IdReferencia, R.TextoReferencia
+ORDER BY COUNT(PR2.IdProducao) DESC, R.IdReferencia ASC;
+GO
+
+
+PRINT '=== CONSULTA 20 ===';
+-- Finalidade: listar as producoes com mais de um autor.
+SELECT  P.IdProducao        AS 'Código',
+        P.Titulo            AS 'Título',
+        COUNT(AU.IdAluno)   AS 'Total de Autores'
+FROM PRODUCOES P INNER JOIN AUTORIAS AU
+    ON P.IdProducao = AU.IdProducao
+GROUP BY P.IdProducao, P.Titulo
+HAVING COUNT(AU.IdAluno) > 1
+ORDER BY COUNT(AU.IdAluno) DESC, P.Titulo ASC;
+GO
+
+
