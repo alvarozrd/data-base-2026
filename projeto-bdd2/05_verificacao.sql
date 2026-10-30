@@ -53,3 +53,25 @@ WHERE A.IdProducao IS NULL;
 GO
 
 
+PRINT '=== VERIFICACAO 5: COLUNAS DAS TABELAS ===';
+SELECT  TABLE_NAME              AS 'Tabela',
+        ORDINAL_POSITION        AS 'Pos',
+        COLUMN_NAME             AS 'Coluna',
+        DATA_TYPE               AS 'Tipo',
+        CHARACTER_MAXIMUM_LENGTH AS 'Tamanho',
+        NUMERIC_PRECISION       AS 'Precisao',
+        NUMERIC_SCALE           AS 'Escala',
+        IS_NULLABLE             AS 'Aceita Nulo'
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME IN (SELECT name FROM sys.tables)
+ORDER BY TABLE_NAME, ORDINAL_POSITION;
+GO
+
+
+PRINT '=== VERIFICACAO 6: RESTRICOES DAS TABELAS ===';
+SELECT  TABLE_NAME      AS 'Tabela',
+        CONSTRAINT_TYPE AS 'Tipo de Restrição',
+        CONSTRAINT_NAME AS 'Nome da Restrição'
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+ORDER BY TABLE_NAME, CONSTRAINT_TYPE, CONSTRAINT_NAME;
+GO
