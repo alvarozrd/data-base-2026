@@ -1,0 +1,38 @@
+--------------------------------------------------------------------------------
+-- 05_verificacao.sql
+-- Projeto Final - Banco de Dados 2 (CJOBDD2) - IFSP Campos do Jordao
+-- Autor: Alvaro Pereira (CJ3037916)
+-- Evidencias da implementacao: quantidade de tabelas e registros, conferencia
+-- das regras RN03 e RN04, colunas e restricoes realmente criadas no banco.
+-- Esta saida alimenta o modelo fisico e o dicionario de dados do relatorio.
+--------------------------------------------------------------------------------
+
+USE ProducaoAcademica_CJ3037916;
+GO
+
+
+PRINT '=== VERIFICACAO 1: TOTAL DE TABELAS ===';
+SELECT COUNT(*) AS 'Total de Tabelas'
+FROM sys.tables;
+GO
+
+
+PRINT '=== VERIFICACAO 2: REGISTROS POR TABELA ===';
+SELECT 'CURSOS' AS 'Tabela', COUNT(*) AS 'Registros' FROM CURSOS
+UNION ALL SELECT 'AREAS_TEMATICAS', COUNT(*) FROM AREAS_TEMATICAS
+UNION ALL SELECT 'TIPOS_PRODUCAO', COUNT(*) FROM TIPOS_PRODUCAO
+UNION ALL SELECT 'VEICULOS_PUBLICACAO', COUNT(*) FROM VEICULOS_PUBLICACAO
+UNION ALL SELECT 'PALAVRAS_CHAVE', COUNT(*) FROM PALAVRAS_CHAVE
+UNION ALL SELECT 'REFERENCIAS', COUNT(*) FROM REFERENCIAS
+UNION ALL SELECT 'PROFESSORES', COUNT(*) FROM PROFESSORES
+UNION ALL SELECT 'ALUNOS', COUNT(*) FROM ALUNOS
+UNION ALL SELECT 'PRODUCOES', COUNT(*) FROM PRODUCOES
+UNION ALL SELECT 'AUTORIAS', COUNT(*) FROM AUTORIAS
+UNION ALL SELECT 'ORIENTACOES', COUNT(*) FROM ORIENTACOES
+UNION ALL SELECT 'BANCAS', COUNT(*) FROM BANCAS
+UNION ALL SELECT 'PRODUCAO_PALAVRA', COUNT(*) FROM PRODUCAO_PALAVRA
+UNION ALL SELECT 'PRODUCAO_REFERENCIA', COUNT(*) FROM PRODUCAO_REFERENCIA
+UNION ALL SELECT 'HISTORICO_STATUS', COUNT(*) FROM HISTORICO_STATUS;
+GO
+
+
