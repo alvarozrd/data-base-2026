@@ -25,3 +25,13 @@ PRODUCAO_REFERENCIA|44
 HISTORICO_STATUS|30
 
 (15 rows affected)
+=== VERIFICACAO 3: REGRA RN04 (PRODUCOES SEM ORIENTADOR) - ESPERADO: 0 LINHAS ===
+IdProducao|Titulo
+----------|------
+
+(0 rows affected)
+=== VERIFICACAO 4: REGRA RN03 (PRODUCOES SEM AUTOR) - ESPERADO: 0 LINHAS ===
+IdProducao|Titulo
+----------|------
+
+(0 rows affected)
