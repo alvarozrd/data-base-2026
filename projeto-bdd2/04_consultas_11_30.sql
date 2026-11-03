@@ -152,182 +152,187 @@ ORDER BY COUNT(AU.IdAluno) DESC, P.Titulo ASC;
 GO
 
 
-PRINT '=== CONSULTA 21 ===';
--- Finalidade: listar os alunos que sao autores de producoes publicadas.
--- (subconsultas aninhadas com IN)
-SELECT  A.IdAluno   AS 'Código',
-        A.Nome      AS 'Aluno'
+-- consulta 21
+SELECT A.IdAluno AS 'Código',
+       A.Nome AS 'Aluno'
+
 FROM ALUNOS A
+
 WHERE A.IdAluno IN (
     SELECT AU.IdAluno
     FROM AUTORIAS AU
     WHERE AU.IdProducao IN (
-        SELECT P.IdProducao
-        FROM PRODUCOES P
-        WHERE P.Situacao = 'Publicada'
+       SELECT P.IdProducao
+       FROM PRODUCOES P
+       WHERE P.Situacao = 'Publicada'
     )
 )
+
 ORDER BY A.Nome ASC;
 GO
 
 
-PRINT '=== CONSULTA 22 ===';
--- Finalidade: listar os alunos que ainda nao participam de nenhuma producao.
--- (subconsulta com NOT EXISTS)
-SELECT  A.IdAluno       AS 'Código',
-        A.Nome          AS 'Aluno',
-        C.NomeCurso     AS 'Curso'
+-- consulta 22
+SELECT A.IdAluno AS 'Código',
+       A.Nome AS 'Aluno',
+       C.NomeCurso AS 'Curso'
+
 FROM ALUNOS A INNER JOIN CURSOS C
     ON A.IdCurso = C.IdCurso
-WHERE NOT EXISTS (
-    SELECT 1
-    FROM AUTORIAS AU
-    WHERE AU.IdAluno = A.IdAluno
-)
+    LEFT JOIN AUTORIAS AU ON A.IdAluno = AU.IdAluno
+
+WHERE AU.IdAluno IS NULL
+
 ORDER BY A.Nome ASC;
 GO
 
 
-PRINT '=== CONSULTA 23 ===';
--- Finalidade: listar os professores que nunca orientaram uma producao.
--- (subconsulta com NOT IN)
-SELECT  PR.IdProfessor  AS 'Código',
-        PR.Nome         AS 'Professor',
-        PR.Titulacao    AS 'Titulação'
+-- consulta 23
+SELECT PR.IdProfessor AS 'Código',
+       PR.Nome AS 'Professor',
+       PR.Titulacao AS 'Titulação'
+
 FROM PROFESSORES PR
+
 WHERE PR.IdProfessor NOT IN (
     SELECT O.IdProfessor
     FROM ORIENTACOES O
 )
+
 ORDER BY PR.Nome ASC;
 GO
 
 
-PRINT '=== CONSULTA 24 ===';
--- Finalidade: unir alunos e professores em uma unica lista de pessoas
--- cadastradas, com o perfil de cada uma. (UNION ALL) Limitada a 20 linhas.
-SELECT TOP 20
-        X.Nome      AS 'Nome',
-        X.Email     AS 'E-mail',
-        X.Perfil    AS 'Perfil'
-FROM (
-    SELECT Nome, Email, 'Aluno' AS Perfil
-    FROM ALUNOS
-    UNION ALL
-    SELECT Nome, Email, 'Professor'
-    FROM PROFESSORES
-) X
-ORDER BY X.Nome ASC;
+-- consulta 24
+SELECT Nome AS 'Nome', Email AS 'E-mail', 'Aluno' AS 'Perfil'
+
+FROM ALUNOS
+
+UNION ALL
+SELECT Nome, Email, 'Professor'
+
+FROM PROFESSORES
+
+ORDER BY Nome, Perfil, [E-mail];
 GO
 
 
-PRINT '=== CONSULTA 25 ===';
--- Finalidade: listar os alunos que sao autores tanto de producoes publicadas
--- quanto de producoes concluidas. (INTERSECT)
+-- consulta 25
 SELECT A.IdAluno AS 'Código', A.Nome AS 'Aluno'
+
 FROM ALUNOS A INNER JOIN AUTORIAS AU
-        ON A.IdAluno = AU.IdAluno
+       ON A.IdAluno = AU.IdAluno
     INNER JOIN PRODUCOES P
-        ON AU.IdProducao = P.IdProducao
+       ON AU.IdProducao = P.IdProducao
+
 WHERE P.Situacao = 'Publicada'
+
 INTERSECT
 SELECT A.IdAluno, A.Nome
+
 FROM ALUNOS A INNER JOIN AUTORIAS AU
-        ON A.IdAluno = AU.IdAluno
+       ON A.IdAluno = AU.IdAluno
     INNER JOIN PRODUCOES P
-        ON AU.IdProducao = P.IdProducao
+       ON AU.IdProducao = P.IdProducao
+
 WHERE P.Situacao = 'Concluída'
+
 ORDER BY 2;
 GO
 
 
-PRINT '=== CONSULTA 26 ===';
--- Finalidade: listar os professores que participaram de bancas, mas nunca
--- orientaram uma producao. (EXCEPT)
+-- consulta 26
 SELECT PR.IdProfessor AS 'Código', PR.Nome AS 'Professor'
+
 FROM PROFESSORES PR INNER JOIN BANCAS B
     ON PR.IdProfessor = B.IdProfessor
+
 EXCEPT
 SELECT PR.IdProfessor, PR.Nome
+
 FROM PROFESSORES PR INNER JOIN ORIENTACOES O
     ON PR.IdProfessor = O.IdProfessor
+
 ORDER BY 2;
 GO
 
 
-PRINT '=== CONSULTA 27 ===';
--- Finalidade: contar as producoes por tipo, mantendo tambem os tipos sem
--- producoes. (FULL OUTER JOIN)
-SELECT  T.NomeTipo          AS 'Tipo de Produção',
-        COUNT(P.IdProducao) AS 'Total'
+-- consulta 27
+SELECT T.NomeTipo AS 'Tipo de Produção',
+       COUNT(P.IdProducao) AS 'Total'
+
 FROM TIPOS_PRODUCAO T FULL OUTER JOIN PRODUCOES P
     ON T.IdTipo = P.IdTipo
+
 GROUP BY T.NomeTipo
+
 ORDER BY COUNT(P.IdProducao) DESC, T.NomeTipo ASC;
 GO
 
 
-PRINT '=== CONSULTA 28 ===';
--- Finalidade: calcular quantos dias e meses cada producao levou entre o
--- registro e a conclusao, exibindo as 10 mais demoradas. (DATEDIFF)
+-- consulta 28
 SELECT TOP 10
-        P.IdProducao                                   AS 'Código',
-        P.Titulo                                       AS 'Título',
-        P.DataRegistro                                 AS 'Registro',
-        H.DataAlteracao                                AS 'Conclusão',
-        DATEDIFF(DAY, P.DataRegistro, H.DataAlteracao)   AS 'Dias',
-        DATEDIFF(MONTH, P.DataRegistro, H.DataAlteracao) AS 'Meses'
+       P.IdProducao AS 'Código',
+       P.Titulo AS 'Título',
+       P.DataRegistro AS 'Registro',
+       H.DataAlteracao AS 'Conclusão',
+       DATEDIFF(DAY, P.DataRegistro, H.DataAlteracao) AS 'Dias',
+       DATEDIFF(MONTH, P.DataRegistro, H.DataAlteracao) AS 'Meses'
+
 FROM PRODUCOES P INNER JOIN HISTORICO_STATUS H
     ON P.IdProducao = H.IdProducao
+
 WHERE H.SituacaoNova = 'Concluída'
-ORDER BY DATEDIFF(DAY, P.DataRegistro, H.DataAlteracao) DESC, P.IdProducao ASC;
+
+ORDER BY DATEDIFF(DAY, P.DataRegistro, H.DataAlteracao) DESC, P.IdProducao ASC, H.IdHistorico ASC;
 GO
 
 
-PRINT '=== CONSULTA 29 ===';
--- Finalidade: exibir a data de publicacao de cada producao publicada, escrita
--- por extenso em portugues. (FORMAT)
-SELECT  H.IdProducao                                AS 'Código',
-        P.Titulo                                    AS 'Título',
-        FORMAT(H.DataAlteracao, 'D', 'pt-br')       AS 'Data da Publicação'
+-- consulta 29
+SELECT H.IdProducao AS 'Código',
+       P.Titulo AS 'Título',
+       FORMAT(H.DataAlteracao, 'D', 'pt-br') AS 'Data da Publicação'
+
 FROM HISTORICO_STATUS H INNER JOIN PRODUCOES P
     ON H.IdProducao = P.IdProducao
+
 WHERE H.SituacaoNova = 'Publicada'
+
 ORDER BY H.DataAlteracao ASC;
 GO
 
 
-PRINT '=== CONSULTA 30 (criacao da view) ===';
--- Finalidade: criar uma view que resume cada producao com curso, tipo e area.
--- Se a view ja existir, ela e removida antes de ser recriada.
-IF OBJECT_ID(N'vw_ResumoProducoes', N'V') IS NOT NULL
-    DROP VIEW vw_ResumoProducoes;
+-- consulta 30
+-- permite executar a criação da visão novamente
+IF EXISTS (
+    SELECT TABLE_NAME
+    FROM INFORMATION_SCHEMA.TABLES
+    WHERE TABLE_SCHEMA = 'dbo'
+      AND TABLE_NAME = 'vw_ResumoProducoes'
+      AND TABLE_TYPE = 'VIEW'
+)
+    DROP VIEW dbo.vw_ResumoProducoes;
 GO
 
-CREATE VIEW vw_ResumoProducoes AS
-    SELECT  P.IdProducao    AS [Código],
-            P.Titulo        AS [Título],
-            C.NomeCurso     AS [Curso],
-            T.NomeTipo      AS [Tipo],
-            A.NomeArea      AS [Área],
-            P.Ano           AS [Ano],
-            P.Situacao      AS [Situação]
+CREATE VIEW dbo.vw_ResumoProducoes AS
+    SELECT P.IdProducao AS [Código],
+          P.Titulo AS [Título],
+          C.NomeCurso AS [Curso],
+          T.NomeTipo AS [Tipo],
+          A.NomeArea AS [Área],
+          P.Ano AS [Ano],
+          P.Situacao AS [Situação]
     FROM PRODUCOES P INNER JOIN CURSOS C
-            ON P.IdCurso = C.IdCurso
-        INNER JOIN TIPOS_PRODUCAO T
-            ON P.IdTipo = T.IdTipo
-        INNER JOIN AREAS_TEMATICAS A
-            ON P.IdArea = A.IdArea;
+       ON P.IdCurso = C.IdCurso
+       INNER JOIN TIPOS_PRODUCAO T ON P.IdTipo = T.IdTipo
+       INNER JOIN AREAS_TEMATICAS A ON P.IdArea = A.IdArea;
 GO
 
-PRINT '=== CONSULTA 30 (uso da view) ===';
--- Finalidade: consultar a view para listar as producoes de 2025 em diante.
-SELECT  [Código],
-        [Título],
-        [Curso],
-        [Tipo],
-        [Situação]
-FROM vw_ResumoProducoes
+SELECT [Código], [Título], [Curso], [Tipo], [Situação]
+
+FROM dbo.vw_ResumoProducoes
+
 WHERE [Ano] >= 2025
+
 ORDER BY [Curso] ASC, [Título] ASC;
 GO
