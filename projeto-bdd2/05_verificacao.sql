@@ -1,23 +1,16 @@
---------------------------------------------------------------------------------
--- 05_verificacao.sql
--- Projeto Final - Banco de Dados 2 (CJOBDD2) - IFSP Campos do Jordao
--- Autor: Alvaro Pereira (CJ3037916)
--- Evidencias da implementacao: quantidade de tabelas e registros, conferencia
--- das regras RN03 e RN04, colunas e restricoes realmente criadas no banco.
--- Esta saida alimenta o modelo fisico e o dicionario de dados do relatorio.
---------------------------------------------------------------------------------
+-- conferência do banco
 
 USE ProducaoAcademica_CJ3037916;
 GO
 
 
-PRINT '=== VERIFICACAO 1: TOTAL DE TABELAS ===';
+-- total de tabelas
 SELECT COUNT(*) AS 'Total de Tabelas'
 FROM sys.tables;
 GO
 
 
-PRINT '=== VERIFICACAO 2: REGISTROS POR TABELA ===';
+-- registros por tabela
 SELECT 'CURSOS' AS 'Tabela', COUNT(*) AS 'Registros' FROM CURSOS
 UNION ALL SELECT 'AREAS_TEMATICAS', COUNT(*) FROM AREAS_TEMATICAS
 UNION ALL SELECT 'TIPOS_PRODUCAO', COUNT(*) FROM TIPOS_PRODUCAO
@@ -36,7 +29,7 @@ UNION ALL SELECT 'HISTORICO_STATUS', COUNT(*) FROM HISTORICO_STATUS;
 GO
 
 
-PRINT '=== VERIFICACAO 3: REGRA RN04 (PRODUCOES SEM ORIENTADOR) - ESPERADO: 0 LINHAS ===';
+-- produções sem orientador
 SELECT P.IdProducao, P.Titulo
 FROM PRODUCOES P LEFT JOIN ORIENTACOES O
     ON P.IdProducao = O.IdProducao
@@ -45,7 +38,7 @@ WHERE O.IdProducao IS NULL;
 GO
 
 
-PRINT '=== VERIFICACAO 4: REGRA RN03 (PRODUCOES SEM AUTOR) - ESPERADO: 0 LINHAS ===';
+-- produções sem autor
 SELECT P.IdProducao, P.Titulo
 FROM PRODUCOES P LEFT JOIN AUTORIAS A
     ON P.IdProducao = A.IdProducao
@@ -53,7 +46,7 @@ WHERE A.IdProducao IS NULL;
 GO
 
 
-PRINT '=== VERIFICACAO 5: COLUNAS DAS TABELAS ===';
+-- colunas das tabelas
 SELECT  TABLE_NAME              AS 'Tabela',
         ORDINAL_POSITION        AS 'Pos',
         COLUMN_NAME             AS 'Coluna',
@@ -68,7 +61,7 @@ ORDER BY TABLE_NAME, ORDINAL_POSITION;
 GO
 
 
-PRINT '=== VERIFICACAO 6: RESTRICOES DAS TABELAS ===';
+-- restrições das tabelas
 SELECT  TABLE_NAME      AS 'Tabela',
         CONSTRAINT_TYPE AS 'Tipo de Restrição',
         CONSTRAINT_NAME AS 'Nome da Restrição'
