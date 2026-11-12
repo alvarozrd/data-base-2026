@@ -79,3 +79,16 @@ SELECT  @@IDENTITY                  AS 'Último IDENTITY',
         IDENT_CURRENT('VEICULOS')   AS 'IDENTITY (VEICULOS)',
         IDENT_CURRENT('AERONAVES')  AS 'IDENTITY (AERONAVES)';
 GO
+
+
+-- Cria uma sequência que começa com 1 e com incremento 1 
+CREATE SEQUENCE Incrementa1 AS INT
+    START WITH 1
+    INCREMENT BY 1;
+GO
+
+-- Cria uma sequência que começa com 10 e com incremento 100
+CREATE SEQUENCE Incrementa100 AS INT
+    START WITH 10
+    INCREMENT BY 100;
+GO
