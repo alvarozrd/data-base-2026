@@ -121,3 +121,13 @@ CREATE SEQUENCE IncrementaDecimal AS DECIMAL(3,0)
     CYCLE
     CACHE 3;
 GO
+
+
+-- Exibe o primeiro valor das sequências
+
+SELECT  NEXT VALUE FOR Incrementa1               AS 'Incrementa1',
+        NEXT VALUE FOR Incrementa100             AS 'Incrementa100',
+        NEXT VALUE FOR Incrementa1000            AS 'Incrementa1000',
+        NEXT VALUE FOR IncrementaDecimal         AS 'IncrementaDecimal';
+GO
+
