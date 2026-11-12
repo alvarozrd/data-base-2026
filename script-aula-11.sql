@@ -68,3 +68,14 @@ GO
 SELECT * FROM VEICULOS;
 GO
 
+-- Exibe o valor do incremento utilizado
+SELECT  IDENT_INCR('AERONAVES') As 'Inc. AERONAVES',
+        IDENT_INCR('VEICULOS')  AS 'Inc. VEICULOS';
+GO
+
+-- Exibindo o último valor de IDENTITY que foi utilizado 
+
+SELECT  @@IDENTITY                  AS 'Último IDENTITY',
+        IDENT_CURRENT('VEICULOS')   AS 'IDENTITY (VEICULOS)',
+        IDENT_CURRENT('AERONAVES')  AS 'IDENTITY (AERONAVES)';
+GO
