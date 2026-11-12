@@ -98,3 +98,16 @@ CREATE SEQUENCE Incrementa1000 AS INT
     START WITH 1000
     INCREMENT BY -100;
 GO
+
+-- Exibe informações sobre as sequências
+
+SELECT name as 'Nome',
+    create_date         AS 'Data de Criação',
+    start_value         AS 'Valor Inicial',
+    increment           AS 'Incremento',
+    minimum_value       AS 'Valor Minímo',
+    maximum_value       AS 'Valor Máximo',
+    current_value       AS 'Valor Atual'
+FROM sys.sequences;
+GO
+
