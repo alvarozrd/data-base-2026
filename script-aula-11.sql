@@ -92,3 +92,9 @@ CREATE SEQUENCE Incrementa100 AS INT
     START WITH 10
     INCREMENT BY 100;
 GO
+
+-- Cria uma sequência que começa com 10 e com incremento 100
+CREATE SEQUENCE Incrementa1000 AS INT
+    START WITH 1000
+    INCREMENT BY -100;
+GO
