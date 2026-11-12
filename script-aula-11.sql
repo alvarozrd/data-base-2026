@@ -111,3 +111,13 @@ SELECT name as 'Nome',
 FROM sys.sequences;
 GO
 
+-- Criando uma sequência com mais parâmetros 
+
+CREATE SEQUENCE IncrementaDecimal AS DECIMAL(3,0)
+    START WITH 125
+    INCREMENT BY 25
+    MINVALUE 100
+    MAXVALUE 200
+    CYCLE
+    CACHE 3;
+GO
