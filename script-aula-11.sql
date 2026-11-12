@@ -54,3 +54,17 @@ CREATE TABLE VEICULOS (
     Modelo VARCHAR(50) NOT NULL
 );
 GO
+
+-- insere valores em VEICULOS
+
+INSERT INTO VEICULOS VALUES
+    ('Ferrari'),
+    ('Camaro'),
+    ('Fusca');
+GO
+
+-- Exibe os dados 
+
+SELECT * FROM VEICULOS;
+GO
+
