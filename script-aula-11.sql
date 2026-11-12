@@ -42,3 +42,15 @@ GO
 SELECT * FROM AERONAVES;
 GO
 
+-- altera o valor de IDENTITY_INSERT
+
+SET IDENTITY_INSERT AERONAVES OFF;
+GO
+
+-- cria a tabela VEICULOS
+-- utiliza o Idetity iniciando em 1 e incrementando em 10
+CREATE TABLE VEICULOS (
+    Codigo INT IDENTITY(1, 10) PRIMARY KEY,
+    Modelo VARCHAR(50) NOT NULL
+);
+GO
