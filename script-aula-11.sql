@@ -181,3 +181,14 @@ SELECT  CodAluno    AS 'Código',
 FROM ALUNOS
 WHERE NomeAluno LIKE @nome;
 GO
+
+-- Atribui um valor à variável durante a declaração
+DECLARE @nome VARCHAR(100) = 'Carlos Pereira';
+
+-- Utiliza a variável em uma consulta
+SELECT  CodAluno    AS 'Código',
+        NomeAluno   AS 'Nome do Aluno',
+        Endereco    AS 'Endereço'
+FROM ALUNOS
+WHERE NomeAluno LIKE @nome;
+GO
