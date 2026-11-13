@@ -207,3 +207,16 @@ IF ((@numero % 2) = 0)
 ELSE
     PRINT 'O número ' + CAST(@numero AS VARCHAR) + ' é ímpar!';
 GO
+
+-- Exemplo de estrutura CASE simples
+SELECT  CodAluno    AS 'Código',
+        NomeAluno   AS 'Nome do Aluno',
+        Endereco    AS 'Endereço',
+        Genero      AS 'Gênero',
+        CASE Genero
+            WHEN 'M' THEN 'Homem'
+            WHEN 'F' THEN 'Mulher'
+            ELSE 'Não declarado'
+        END AS 'Homem / Mulher'
+FROM ALUNOS;
+GO
