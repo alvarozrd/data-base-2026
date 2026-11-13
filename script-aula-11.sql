@@ -192,3 +192,9 @@ SELECT  CodAluno    AS 'Código',
 FROM ALUNOS
 WHERE NomeAluno LIKE @nome;
 GO
+
+-- Armazena o total de viagens em uma variável
+DECLARE @totalViagens INT = (SELECT COUNT(*) FROM VIAGENS);
+
+SELECT @totalViagens AS 'Total de Viagens';
+GO
