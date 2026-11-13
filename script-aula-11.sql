@@ -131,3 +131,42 @@ SELECT  NEXT VALUE FOR Incrementa1               AS 'Incrementa1',
         NEXT VALUE FOR IncrementaDecimal         AS 'IncrementaDecimal';
 GO
 
+-- Cria uma tabela temporária, para ilustrar a utilização das sequências
+CREATE TABLE #TestaSequencia (
+    ID      INT,
+    Nome    CHAR(20)
+);
+GO
+
+-- Reinicia o valor da sequência Incrementa100
+ALTER SEQUENCE Incrementa100
+    RESTART WITH 10;
+GO
+
+-- Utiliza a sequência INCREMENTA100 para 
+-- inserir valores na tabela #TestaSequencia
+INSERT INTO #TestaSequencia (ID, Nome) VALUES
+    (NEXT VALUE FOR Incrementa100, 'Ana'),
+    (NEXT VALUE FOR Incrementa100, 'Maria'),
+    (NEXT VALUE FOR Incrementa100, 'João');
+GO
+
+-- Exibe os valores da tabela #TestaSequência
+SELECT * FROM #TestaSequencia;
+GO
+
+
+-- Recuperando o valor atual de uma sequência 
+SELECT current_value        AS      'Valor Atual'
+    FROM sys.sequences
+    WHERE name = 'Incrementa100';
+GO
+
+-- Remove a sequência Incrementa100
+DROP SEQUENCE Incrementa100;
+GO
+
+-- Tenta inserir um registro utilizando uma sequência INCREMENTA100
+INSERT INTO #TestaSequencia (ID, Nome) VALUES
+    (NEXT VALUE FOR Incrementa100, 'José');
+GO
