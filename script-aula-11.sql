@@ -198,3 +198,12 @@ DECLARE @totalViagens INT = (SELECT COUNT(*) FROM VIAGENS);
 
 SELECT @totalViagens AS 'Total de Viagens';
 GO
+
+-- Verifica se um número é par ou ímpar
+DECLARE @numero INT = 10;
+
+IF ((@numero % 2) = 0)
+    PRINT 'O número ' + CAST(@numero AS VARCHAR) + ' é par!';
+ELSE
+    PRINT 'O número ' + CAST(@numero AS VARCHAR) + ' é ímpar!';
+GO
