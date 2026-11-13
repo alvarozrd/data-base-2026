@@ -170,3 +170,14 @@ GO
 INSERT INTO #TestaSequencia (ID, Nome) VALUES
     (NEXT VALUE FOR Incrementa100, 'José');
 GO
+-- Declara uma variável e atribui um valor com SET
+DECLARE @nome VARCHAR(100);
+SET @nome = 'Carlos Pereira';
+
+-- Utiliza a variável em uma consulta
+SELECT  CodAluno    AS 'Código',
+        NomeAluno   AS 'Nome do Aluno',
+        Endereco    AS 'Endereço'
+FROM ALUNOS
+WHERE NomeAluno LIKE @nome;
+GO
