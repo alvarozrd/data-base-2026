@@ -220,3 +220,5 @@ SELECT  CodAluno    AS 'Código',
         END AS 'Homem / Mulher'
 FROM ALUNOS;
 GO
+
+
